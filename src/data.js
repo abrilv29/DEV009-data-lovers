@@ -1,7 +1,7 @@
-// estas funciones son de ejemplo
+export const filterCards = () => {
+const filteredNames = allPokem.filter(allPokem => allPokem.name);
+return filteredNames ;
 
-export const example = () => {
-  return 'example';
 };
 
 export const anotherExample = () => {
