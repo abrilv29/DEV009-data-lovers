@@ -1,7 +1,6 @@
-export const filterCards = () => {
-const filteredNames = allPokem.filter(allPokem => allPokem.name);
-return filteredNames ;
-
+export const filterCards = (cards) => {
+const filteredCards = cards.filter(cards => cards.name === cards.name);
+return filteredCards ;
 };
 
 export const anotherExample = () => {
