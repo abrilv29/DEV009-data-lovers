@@ -2,6 +2,28 @@ import { filterCards } from './data.js';
 import pokemon from './data/pokemon/pokemon.js';
 import data from './data/pokemon/pokemon.js';
 
+/*Construccion del header
+const header = document.createElement("header");
+header.classList.add("class","content-header");
+const headerFirst = body.firstchild;
+body.insertBefore(header,headerFirst);
+document.body.appendChild(header);*/
+
+
+/*1.1 Variable que crea el elemento header
+const headerPokemon = document.createElement('div');
+//1.2 Varible que nos ayuda a insertar el Encabezado al inicio del Body
+const headerFirst = bodyPage.firstChild;
+  bodyPage.insertBefore(headerPokemon, headerFirst);
+//1.3 Variable que crea un elemento h1
+const fondoHeader = document.createElement('h1');
+  fondoHeader.textContent = '.';
+//1.4 Asignamos una clase al h1
+  fondoHeader.classList.add('fondo');
+//1.5 Asignamos el h1 como hijo de nuestro header
+  headerPokemon.appendChild(fondoHeader);*/
+
+
 
 //console.log(data);
 /*Busqueda por nombre
@@ -80,3 +102,5 @@ const pokemonList = (list) => {
     });
 }
 pokemonList(allName);
+
+
