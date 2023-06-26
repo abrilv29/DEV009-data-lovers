@@ -12,3 +12,32 @@ body {
     background-size: cover;
     background-position: center;
 }
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+/*Contenedor #root -- Selector por ID*/
+
+#root{
+
+    background-color: aqua;
+    padding: 35px;
+    width: 100%;
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+ 
+}
+.content-principal{
+    background-color:azure;
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+}
+
+
