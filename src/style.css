@@ -1,3 +1,17 @@
+body {
+    background-image: url(fondo.png);
+    
+    background-size: contain;
+    
+}
+
+.fondo {
+    background-image: url(encabezado.png);
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+}
 *{
     margin:0;
     padding:0;
