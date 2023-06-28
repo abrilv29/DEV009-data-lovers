@@ -21,18 +21,33 @@ inputSearch.type = "search";
 inputSearch.id = "input-search";
 headerFilters.appendChild(inputSearch);
 
-/*select tipos de pokemones
-const pokemonType = (types) => {
-    let countTypes = 0;
-    types.forEach(pokemon => {
-        const selectType = document.createElement("select");
-        selectType.id = "select-types";
-        selectType.add(pokemon.type);
-        countTypes += 1;
-        headerFilters.appendChild(selectType);
-    })
+//Despliegue de tipos de Pokemon
+ const arrayOfTypes = ["grass", "poison", "normal", "water", "electric", "fighting", "fairy", "ice", "flying", "psychic", "fire", "steel", "bug", "rock", "dragon", "dark", "ground", "ghost"];
+ console.log(arrayOfTypes);
+//div para el filtro de tipos de pokemon
+const pokemonFilterType = document.createElement("fieldset");
+const labelPokemonFilterType =document.createElement("legend");
+labelPokemonFilterType.innerHTML = "Búsqueda por tipo de Pokémon: "
+pokemonFilterType.appendChild(labelPokemonFilterType);
+headerFilters.appendChild(pokemonFilterType);
+
+for (let i = 0; i < arrayOfTypes.length; i++) {
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.name = arrayOfTypes[i];
+    checkbox.value = arrayOfTypes[i];
+    checkbox.id = arrayOfTypes [i];
+
+    let labelPokemonType = document.createElement("label");
+    labelPokemonType.htmlFor = arrayOfTypes[i];
+    labelPokemonType.appendChild(document.createTextNode(arrayOfTypes[i]));
+
+    pokemonFilterType.appendChild(checkbox);
+    pokemonFilterType.appendChild(labelPokemonType);
 }
-pokemonType(all)*/
+
+
+
 //tarjetas Pokemon
 const root = document.getElementById('root');
 
