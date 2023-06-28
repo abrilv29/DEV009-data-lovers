@@ -2,71 +2,17 @@ import { filterCards } from './data.js';
 import pokemon from './data/pokemon/pokemon.js';
 import data from './data/pokemon/pokemon.js';
 
-/*Construccion del header
-const header = document.createElement("header");
-header.classList.add("class","content-header");
-const headerFirst = body.firstchild;
-body.insertBefore(header,headerFirst);
-document.body.appendChild(header);*/
-
-
-/*1.1 Variable que crea el elemento header
-const headerPokemon = document.createElement('div');
+//Creacion del  HEADER
+//Variable donde se va a ir modificando la estructura de nuestra pagina
+const bodyPage = document.querySelector('body');
+//ESTRUCTURA 
+//1. Insertar Encabezado al Body
+//1.1 Variable que crea el elemento header
+const headerPokemon = document.createElement('header');
+headerPokemon.classList.add("class", "content-header")
 //1.2 Varible que nos ayuda a insertar el Encabezado al inicio del Body
 const headerFirst = bodyPage.firstChild;
-  bodyPage.insertBefore(headerPokemon, headerFirst);
-//1.3 Variable que crea un elemento h1
-const fondoHeader = document.createElement('h1');
-  fondoHeader.textContent = '.';
-//1.4 Asignamos una clase al h1
-  fondoHeader.classList.add('fondo');
-//1.5 Asignamos el h1 como hijo de nuestro header
-  headerPokemon.appendChild(fondoHeader);*/
-
-
-
-//console.log(data);
-/*Busqueda por nombre
-const root = document.getElementById('root');
-const allPokemon = data.pokemon;
-//root.innerHTML = `<h1>${data.pokemon[0].name}</h1>`; //cada uno
-
-for(let i=0; i < allPokemon.length; i++){// llamas a todos
-    const titulo = document.createElement('h1');
-    titulo.innerText = data.pokemon[i].name;
-    root.appendChild(titulo);
-}
-
-
-/*Buscar la data por número de pokemon
-const numPokemon = data.pokemon;
-for(let e=0; e < numPokemon.length; e++){
-    const num = document.createElement('p');
-    num.innerText = data.pokemon[e].num;
-    root.appendChild(num);
-}*/
-
-
-/*Buscar la data por el nombre(name) del pokemon
-const allName = data.pokemon; // data pokemon 
-const filtro = filterCards(allName); // data.js funciones
-const root = document.getElementById('root');//contenedor principal
-for(let i=0; i < filtro.length; i++){// llamas a todos
-    const titulo = document.createElement('h1');//crear etiqueta h1
-    titulo.innerText = data.pokemon[i].name;
-    root.appendChild(titulo);
-}*/
-
-
-/*Hacer un for para que se repita varias veces el div
-//Crear un elemento div que contenga la imagen el número y nombre del pokemon
-const root = document.getElementById('root');
-const content = document.createElement("div");
-content.classList.add("class", "content-principal");
-content.textContent = "Elemento 1";
-//Agregar al documento
-root.appendChild(content);
-*/
+bodyPage.insertBefore(headerPokemon, headerFirst);
 
 //Hacer un for para que se repita varias veces el div
 //Crear un elemento div que contenga la imagen el número y nombre del pokemon
@@ -78,7 +24,6 @@ const root = document.getElementById('root');
     const content = document.createElement("div");
     content.classList.add("class", "content-principal");
     content.innerText = data.pokemon[i].name;
-    root.appendChild(content);
 }*/
 
 //Mostrar todas las tarjetas pokemon 
@@ -99,8 +44,63 @@ const pokemonList = (list) => {
 
         countPokemon += 1;
         root.appendChild(content);
+
     });
+    /*const divCount = document.createElement("div");
+    divCount.classList.add("class", "content-count");
+    divCount.innerHTML = "Pokemones encontrados:" + " " +countPokemon;
+    //"resultado:" + countPokemon + " " + "pokemones";
+    bodyPage.insertBefore(divCount, root);
+    return root;*/
 }
 pokemonList(allName);
 
+
+//Buscar los pokemones por nombre usando un input
+const contentSearch = document.createElement("div");
+contentSearch.classList.add("class", "content-search");
+//const searchDiv = bodyPage.firstChild;
+bodyPage.insertBefore(contentSearch, headerFirst);
+const searchInput = document.createElement("input");
+searchInput.type = 'search';
+searchInput.placeholder = 'Buscando ...';
+contentSearch.appendChild(searchInput);
+const searchBtn = document.createElement("button");
+searchBtn.id = 'btn-buscar';
+searchBtn.innerHTML = 'reset';
+contentSearch.appendChild(searchBtn);
+
+searchInput.addEventListener('input', () => {
+    const pokemonSearch = filterCards(allName, searchInput.value);
+    if (pokemonSearch.lenght === 0) {
+        mensajeError();
+        
+    }
+    else {
+        root.innerHTML = '';
+        pokemonList(pokemonSearch);
+       
+    }
+});
+searchBtn.addEventListener('click', () => {
+    
+    root.innerHTML = '';
+    searchInput.value = '';
+});
+
+
+//Mensaje de no encontrado
+
+const mensajeError = () => {
+    root.innerHTML = '';
+    const divError = document.createElement('div');
+    divError.classList.add("class", "content-error");
+    const parrafo = document.createElement('p');
+    parrafo.innerHTML = 'No existe ese pokemon';
+    const imgError = document.createElement('img');
+    imgError.src = 'psyduck.gif';
+    divError.appendChild(parrafo);
+    divError.appendChild(imgError);
+    root.appendChild(divError);
+}
 

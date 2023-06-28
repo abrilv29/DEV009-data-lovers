@@ -3,22 +3,14 @@
     padding:0;
     box-sizing: border-box;
 }
-
+/*Contenedor que ajusta el maximo de la pagina*/
 .content-header{
-    width: 100%;
-    background-color: blue;
+    width:100%;
     height: 200px;
+    background-color:blue;
 }
 
-/*.fondo{
-    width: 100%;
-    background-color: blue;
-    height: 200px;
-
-}*/
-
 /*Contenedor #root -- Selector por ID*/
-
 #root{
 
     background-color: aqua;
@@ -38,12 +30,50 @@
     height: 200px;
     margin: 5px;
 }
+
+.content-search{
+    width: 100%;
+    background-color:pink;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+.content-search input{
+    width: 250px;
+    height: 50px;
+    margin: 20px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    outline: none;
+}
+.content-search input::placeholder {
+    color: #0975f0;
+  }
+#btn-buscar{
+    width: 80px;
+    height: 50px;
+    margin: 20px;
+
+}
 .content-footer{
     width: 100%;
     background-color:chartreuse;
     height: 200px;
 }
 
+/*body {
+    background-image: url(fondo.png);
+    
+    background-size: contain;
+    
+}
 
+.fondo {
+    background-image: url(encabezado.png);
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+}*/
 
 

@@ -1,6 +1,5 @@
-export const filterCards = (cards) => {
-const filteredCards = cards.filter(cards => cards.name === cards.name);
-return filteredCards ;
+export const filterCards = (arrayPokemon,input) => {
+    return arrayPokemon.filter(elemento => elemento.name === input.toLowerCase());
 };
 
 export const anotherExample = () => {
