@@ -1,4 +1,4 @@
-import getPokemonByType from './data.js';
+import {getPokemonByType} from './data.js';
 //import pokemon from './data/pokemon/pokemon.js';
 import data from './data/pokemon/pokemon.js';
 
