@@ -1,4 +1,4 @@
-import { filterCards } from './data.js';
+import getPokemonByType from './data.js';
 //import pokemon from './data/pokemon/pokemon.js';
 import data from './data/pokemon/pokemon.js';
 
@@ -32,9 +32,11 @@ pokemonFilterType.appendChild(labelPokemonFilterType);
 headerFilters.appendChild(pokemonFilterType);
 
 for (let i = 0; i < arrayOfTypes.length; i++) {
+    let divPokemonType = document.createElement("div");
+    
     let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    checkbox.name = arrayOfTypes[i];
+    checkbox.name = "pokemonType";
     checkbox.value = arrayOfTypes[i];
     checkbox.id = arrayOfTypes [i];
 
@@ -42,9 +44,41 @@ for (let i = 0; i < arrayOfTypes.length; i++) {
     labelPokemonType.htmlFor = arrayOfTypes[i];
     labelPokemonType.appendChild(document.createTextNode(arrayOfTypes[i]));
 
-    pokemonFilterType.appendChild(checkbox);
-    pokemonFilterType.appendChild(labelPokemonType);
+    divPokemonType.appendChild(checkbox);
+    divPokemonType.appendChild(labelPokemonType);
+    pokemonFilterType.appendChild(divPokemonType);
 }
+
+//boton de busqueda
+const searchButton = document.createElement("button");
+searchButton.id = "boton-filtro";
+searchButton.innerHTML = "Buscar: ";
+//se agrega evento al boton
+searchButton.addEventListener("click", function(){
+    
+    const root = document.getElementById('root');
+    let checkedValue = null; 
+    //trae los 19 tipos del arreglo de tipos de pokemon
+    const inputElements = document.getElementsByName('pokemonType');
+    //se inicializa un arreglo que tendra los tipos de pokemon seleccionados
+    let arrayOfFilteredPokemonType  = new Array();
+ //limpia la zona de los pokemones con un string vacio
+    root.innerHTML = '';
+    //este for llena el arreglo arrayOfFilteredPokemonType con los tipos de pokemon seleccionados en la busqueda
+    for(let i=0; i < inputElements.length ; ++i){
+        if(inputElements[i].checked){
+             checkedValue = inputElements[i].value;
+             arrayOfFilteredPokemonType.push(checkedValue);
+          }
+    }
+    //alert(inputElements.length);
+    //alert(arrayOfFilteredPokemonType.length);
+    
+    let filteredDataByType = getPokemonByType(arrayOfFilteredPokemonType,allPokemon);
+    pokemonList(filteredDataByType);
+    
+    });
+headerFilters.appendChild(searchButton);
 
 
 
