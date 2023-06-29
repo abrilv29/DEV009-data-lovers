@@ -4,18 +4,22 @@ export const filterCards = (arrayPokemon, input) => {
 
 export const filterOrder = (arrayPokemon, orderSelect) => {
 
-  let orderArray = [];
+  let orderName;
 
   switch (orderSelect) {
-    case 'A-Z':
-      orderArray = arrayPokemon.sort((a, b) => ((a.name <= b.name) ? -1 : 1));
+    case "A-Z":
+      orderName = arrayPokemon.sort((a, b) => (a.name > b.name ? 1 : -1));
       break;
-    case 'num':
-      orderArray = arrayPokemon.sort((a, b) => a.num - b.num);
+    case "Z-A":
+      orderName = arrayPokemon.sort((a, b) => (a.name > b.name ? -1 : 1));
+      break;
+    case "num":
+      orderName = arrayPokemon.sort((a, b) => a.num > b.num ? 1 : -1);
       break;
     default:
-  }
 
-  return orderArray;
+  }
+  console.log(orderName);
+  return orderName;
 
 };

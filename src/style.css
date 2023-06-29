@@ -26,9 +26,20 @@
 }
 .content-principal{
     background-color:azure;
+    background-repeat: no-repeat;
+    background-size: contain;
     width: 200px;
     height: 200px;
     margin: 5px;
+}
+.content-principal .content-img{
+    align-items: center;
+    
+}
+.content-principal .content-img .num-pokemon{
+    background-color: #db0909;
+    width: 50px;
+
 }
 
 .content-search{
@@ -50,11 +61,18 @@
 .content-search input::placeholder {
     color: #0975f0;
   }
-#pokemonSelect{
-    width: 100px;
+.content-search #pokemonSelect{
+    width: 150px;
     height: 50px;
     margin: 20px;
+    outline: none;
 
+}
+.content-search #candySelect{
+    width: 150px;
+    height: 50px;
+    margin: 20px;
+    outline: none;
 }
 .content-footer{
     width: 100%;
