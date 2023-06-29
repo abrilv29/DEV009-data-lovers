@@ -92,9 +92,6 @@ searchButton.addEventListener("click", function(){
     //alert(inputElements.length);
     //alert(arrayOfFilteredPokemonType.length);
     //busca los pokemones que cumplan con los tipos seleccionados (o filtrados) en los checkbox
-    
-    
-    /*codigo original funcional, regresar aquí en caso error */
     let filteredDataByType = getPokemonByType(arrayOfSelectedPokemonType,allPokemon);
     pokemonList(filteredDataByType);
     
