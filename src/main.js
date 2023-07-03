@@ -1,5 +1,6 @@
-import { filterCards} from './data.js';
+import {filterCandy } from './data.js';
 import { filterOrder} from './data.js';
+import { filterCards} from './data.js';
 import data from './data/pokemon/pokemon.js';
 
 /* ------------------------------ ESTRUCTURA DEL HTML  -------------------------------------- */
@@ -24,12 +25,14 @@ console.log(allName);
 //CONTENEDOR DONDE SE MUESTRAN LAS CARDS POKEMON
 const root = document.getElementById('root');
 
-/*for (let i = 0; i < filtro.length; i++) {// llamas a todos
-    const content = document.createElement("div");
-    content.classList.add("class", "content-principal");
-    content.innerText = data.pokemon[i].name;
-    root.appendChild(content);
-}*/
+//Iconos por tipo de pokemon
+const TypePokemon = (arrayType) => {
+  let imgEachPokemon = '';
+  arrayType.forEach((typeElement) => {
+    imgEachPokemon += `<img src="img/iconos/${typeElement}.png" alt=" type pokemon"/>`;
+  });
+  return imgEachPokemon;
+};
 
 const pokemonList = (list) => {
     // let countPokemon = 0;
@@ -44,9 +47,7 @@ const pokemonList = (list) => {
          </div>
          <div class="content-info">
          <p class="name-pokemon">${pokemon.name}</p>
-         </div>
-         <div class="content-info">
-         <p class="name-pokemon">${pokemon.type}</p>
+         <div class="type-pokemon">${TypePokemon(pokemon.type)}</div>
          </div>`
  
          //countPokemon += 1;
@@ -86,7 +87,7 @@ const mensajeError = () => {
     const parrafo = document.createElement("p");
     parrafo.innerHTML = 'No existe ese pokemon';
     const imgError = document.createElement("img");
-    imgError.src = 'psyduck.gif';
+    imgError.src = './img/psyduck.gif';
     divError.appendChild(parrafo);
     divError.appendChild(imgError);
     root.appendChild(divError);
@@ -135,7 +136,6 @@ select.addEventListener('change', () => {
           break;
         case 'Z-A':
             root.innerHTML = '';
-          // eslint-disable-next-line no-case-declarations
           pokemonList(filterOrder(allName,'Z-A'));
           break;
         case 'num':
@@ -158,22 +158,33 @@ mensajeCandy.text = "candy evolution";
 selectCandy.add(mensajeCandy);
 
 const optionC1 = document.createElement("option");
-optionC1 .value = "opcion1";
+optionC1 .value = "25";
 optionC1 .text = "25";
 selectCandy.add(optionC1);
 
 const optionC2 = document.createElement("option");
-optionC2 .value = "opcion2";
+optionC2 .value = "25";
 optionC2.text = "50";
 selectCandy.add(optionC2);
 
 const optionC3 = document.createElement("option");
-optionC3 .value = "opcion3";
+optionC3 .value = "100";
 optionC3.text = "100";
 selectCandy.add(optionC3);
 
 const optionC4 = document.createElement("option");
-optionC4.value = "opcion4";
+optionC4.value = "100";
 optionC4.text = "400";
 selectCandy.add(optionC4);
 contentSearch.appendChild(selectCandy);
+
+selectCandy.addEventListener('change', () => {
+
+  switch (selectCandy.value) {
+    case '25':
+      root.innerHTML = '';
+      pokemonList(filterCandy(allName,'25'));
+      break;
+      default:
+  }
+});

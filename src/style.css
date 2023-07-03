@@ -3,17 +3,33 @@
     padding:0;
     box-sizing: border-box;
 }
+/* --------------------Paleta de colores------------------------*/
+:root{
+    --color-root: rgba(218, 218, 223, 0.384);
+    --color-search:#F5F5F5;
+    --color-type:#E8E8E8;
+    --color-check:#D9D9D9;
+
+}
+
+
+
+
+
 /*Contenedor que ajusta el maximo de la pagina*/
 .content-header{
     width:100%;
-    height: 200px;
-    background-color:blue;
+    height: 320px;
+    background-image: url(./img/Banner.png);
+    background-size:cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 /*Contenedor #root -- Selector por ID*/
 #root{
 
-    background-color: aqua;
+    background-color:var(--color-root);
     padding: 35px;
     width: 100%;
     /*height: 100vh;*/
@@ -22,30 +38,49 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
  
 }
 .content-principal{
-    background-color:azure;
+    /*background-color:azure;*/
+    background-image: url(./img/cards/8.png);
     background-repeat: no-repeat;
-    background-size: contain;
-    width: 200px;
-    height: 200px;
+    background-size: cover;
+    width: 230px;
+    height: 230px;
     margin: 5px;
+    
 }
 .content-principal .content-img{
+    display: flex;
+    justify-content: center;
     align-items: center;
     
 }
 .content-principal .content-img .num-pokemon{
-    background-color: #db0909;
-    width: 50px;
-
+   /* background-color: #db0909;*/
+    width: 25px;
+    margin: 0 35px 32px 0;
+    font-weight: bolder;
+} 
+.content-info{
+    /*background-color:#0975f0;*/
+    margin: 5px;
 }
-
+.content-info .type-pokemon{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.type-pokemon img{
+   width: 2.5rem;
+   margin: 5px;
+}
 .content-search{
     width: 100%;
-    background-color:pink;
-    height: 100px;
+    background-color:var(--color-search);
+    height: 150px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -95,4 +130,12 @@
     background-position: center;
 }*/
 
-
+/* ----------responsive desing ---------*/
+@media (max-width:768px) {
+    .content-header{
+        padding: 75px;
+        background-size: contain;
+        height: auto;
+    }
+  
+}

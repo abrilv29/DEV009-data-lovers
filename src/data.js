@@ -1,5 +1,5 @@
 export const filterCards = (arrayPokemon, input) => {
-  return arrayPokemon.filter(elemento => elemento.name.startsWith(input.toLowerCase()));
+  return arrayPokemon.filter(elemento => elemento.name.includes(input.toLowerCase()));
 };
 
 export const filterOrder = (arrayPokemon, orderSelect) => {
@@ -23,3 +23,14 @@ export const filterOrder = (arrayPokemon, orderSelect) => {
   return orderName;
 
 };
+
+export const filterCandy = (orderCandy) => {
+
+  console.log(orderCandy);
+
+return orderCandy = evolution["next-evolution"].filter(ev => ev["candy-cost"] === "25");
+
+
+};
+
+
