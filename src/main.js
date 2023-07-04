@@ -20,7 +20,7 @@ bodyPage.insertBefore(headerFilters, headerFirst);
 //div banner 
 const divBanner = document.createElement("img");
 divBanner.id = "banner";
-divBanner.src = "encabezado.png"
+divBanner.src = "/imagenes/encabezado.png"
 headerFilters.appendChild(divBanner);
 //crear un div para el input search
 const divInputSearch = document.createElement("div");
@@ -30,6 +30,9 @@ headerFilters.appendChild(divInputSearch);
 const inputSearch = document.createElement("input");
 inputSearch.type = "search";
 inputSearch.id = "input-search";
+inputSearch.placeholder = "Type Pokemon Name"
+
+
 
 inputSearch.addEventListener('input', () => {
   const pokemonSearch = getPokemonByName(allPokemon, inputSearch.value);
@@ -57,7 +60,7 @@ divPokemonType.id = "DivPokemonTypes";
 headerFilters.appendChild(divPokemonType);
 const pokemonFilterType = document.createElement("fieldset");
 const labelPokemonFilterType =document.createElement("legend");
-labelPokemonFilterType.innerHTML = "Búsqueda por tipo de Pokémon: "
+labelPokemonFilterType.innerHTML = "Búsqueda por tipo de Pokémon: ";
 pokemonFilterType.appendChild(labelPokemonFilterType);
 divPokemonType.appendChild(pokemonFilterType);
 
