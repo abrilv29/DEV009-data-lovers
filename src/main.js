@@ -33,6 +33,15 @@ const TypePokemon = (arrayType) => {
   });
   return imgEachPokemon;
 };
+//Iconos por tipo de pokemon
+/*const cardsPokemon = (arrayCards) => {
+  let imgEachPokemon = '';
+  arrayCards.forEach((cardsElement) => {
+    imgEachPokemon += `<img src="img/cards/${cardsElement}.png" alt=" type pokemon"/>`;
+  });
+  return imgEachPokemon;
+};${cardsPokemon(pokemon.type)}*/
+
 
 const pokemonList = (list) => {
     // let countPokemon = 0;
@@ -41,13 +50,14 @@ const pokemonList = (list) => {
          const content = document.createElement("div");
          content.classList.add("class", "content-principal");
          content.innerHTML = `
-         <div class="content-img">
+         
+         <div class="container-cards ${pokemon.type[0]} content-card">
          <p class="num-pokemon">${pokemon.num}</p>
          <img src="${pokemon.img}">
-         </div>
          <div class="content-info">
          <p class="name-pokemon">${pokemon.name}</p>
          <div class="type-pokemon">${TypePokemon(pokemon.type)}</div>
+         </div>
          </div>`
  
          //countPokemon += 1;
