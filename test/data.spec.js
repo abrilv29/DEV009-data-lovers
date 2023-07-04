@@ -1,9 +1,36 @@
 import { getPokemonByType } from '../src/data.js';
 
 
+const objPokemon = [{
+  "num": "001",
+    "name": "bulbasaur",
+    "type": [
+      "grass",
+      "poison"
+    ],
+    "resistant": [
+      "water",
+      "electric",
+      "grass",
+      "fighting",
+      "fairy"
+    ],
+    "weaknesses": [
+      "fire",
+      "ice",
+      "flying",
+      "psychic"
+    ],
+    "evolution": {
+      "next-evolution": [{
+        "candy-cost": "25",
+      }]
+    }
+},
 
+]
 
-/*describe('example', () => {
+describe('example', () => {
   it('is a function', () => {
     expect(typeof example).toBe('function');
   });
@@ -14,7 +41,7 @@ import { getPokemonByType } from '../src/data.js';
 });
 
 
-describe('anotherExample', () => {
+/*describe('anotherExample', () => {
   it('is a function', () => {
     expect(typeof anotherExample).toBe('function');
   });

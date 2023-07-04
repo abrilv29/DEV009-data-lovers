@@ -18,8 +18,9 @@ headerFilters.setAttribute("id", "encabezado");
 const headerFirst = bodyPage.firstChild;
 bodyPage.insertBefore(headerFilters, headerFirst);
 //div banner 
-const divBanner = document.createElement("div");
+const divBanner = document.createElement("img");
 divBanner.id = "banner";
+divBanner.src = "encabezado.png"
 headerFilters.appendChild(divBanner);
 //crear un div para el input search
 const divInputSearch = document.createElement("div");
