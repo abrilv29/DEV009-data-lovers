@@ -1,7 +1,9 @@
-import { example, anotherExample } from '../src/data.js';
+import { getPokemonByType } from '../src/data.js';
 
 
-describe('example', () => {
+
+
+/*describe('example', () => {
   it('is a function', () => {
     expect(typeof example).toBe('function');
   });
@@ -20,4 +22,4 @@ describe('anotherExample', () => {
   it('returns `anotherExample`', () => {
     expect(anotherExample()).toBe('OMG');
   });
-});
+});*/

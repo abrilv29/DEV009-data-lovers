@@ -53,7 +53,7 @@ const arrayOfTypes = ["grass", "poison", "normal", "water", "electric", "fightin
 //div para el filtro de tipos de pokemon
 const divPokemonType = document.createElement("aside");
 divPokemonType.id = "DivPokemonTypes";
-bodyPage.appendChild(divPokemonType);
+headerFilters.appendChild(divPokemonType);
 const pokemonFilterType = document.createElement("fieldset");
 const labelPokemonFilterType =document.createElement("legend");
 labelPokemonFilterType.innerHTML = "Búsqueda por tipo de Pokémon: "
@@ -61,7 +61,8 @@ pokemonFilterType.appendChild(labelPokemonFilterType);
 divPokemonType.appendChild(pokemonFilterType);
 
 for (let i = 0; i < arrayOfTypes.length; i++) {
-  const divPokemonType = document.createElement("div");
+  const divPokemonType = document.createElement("li");
+  divPokemonType.id = arrayOfTypes [i];
     
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
