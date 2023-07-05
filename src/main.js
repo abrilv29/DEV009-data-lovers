@@ -1,6 +1,9 @@
 import {filterCandy } from './data.js';
 import { filterOrder} from './data.js';
 import { filterCards} from './data.js';
+import {getPokemonByType} from './data.js';
+import {getPokemonByResistant} from './data.js';
+import {getPokemonByWeaknesses} from './data.js';
 import data from './data/pokemon/pokemon.js';
 
 /* ------------------------------ ESTRUCTURA DEL HTML  -------------------------------------- */
@@ -11,7 +14,7 @@ const bodyPage = document.querySelector('body');
 //1. Insertar Encabezado al Body
 //1.1 Variable que crea el elemento header
 const headerPokemon = document.createElement('header');
-headerPokemon.classList.add("class", "content-header");
+headerPokemon.classList.add("content-header");
 const imgElement = document.createElement('img');
 imgElement.src = 'img/Banner.png';
 imgElement.alt = 'Banner pokemon';
@@ -60,6 +63,7 @@ const pokemonList = (list) => {
      });
     }
     pokemonList(allName);
+    
 /* ------------------------------ ESTRUCTURA DEL SEARCH NAME  -------------------------------------- */
 //Buscar los pokemones por nombre usando un input
 const contentSearch = document.createElement("div");
@@ -95,6 +99,7 @@ searchInput.addEventListener('input', () => {
         pokemonList(resulPokemon);
     }
 });
+
 
 //Mensaje de no encontrado
 
@@ -207,3 +212,141 @@ selectCandy.addEventListener('change', () => {
       default:
   }
 });
+/*-----------------ESTRUCTURA FILTRO POKEMON BY TYPE--------------------------*/
+
+const arrayOfTypes = ["grass", "poison", "normal", "water", "electric", "fighting", "fairy", "ice", "flying", "psychic", "fire", "steel", "bug", "rock", "dragon", "dark", "ground", "ghost"];
+const divPokemonType = document.createElement("div");
+divPokemonType.id = "DivPokemonTypes";
+contentSearch.appendChild(divPokemonType);
+
+const pokemonFilterType = document.createElement("fieldset");
+const labelPokemonFilterType =document.createElement("legend");
+labelPokemonFilterType.innerHTML = "Filters By Type";
+pokemonFilterType.appendChild(labelPokemonFilterType);
+divPokemonType.appendChild(pokemonFilterType);
+
+for (let i = 0; i < arrayOfTypes.length; i++) {
+  const divPokemonType = document.createElement("li");
+  divPokemonType.id = arrayOfTypes [i];
+    
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.name = "pokemonType";//con este nombre se agrupan todos los checkbox para consultarlos con una sola instruccion (document.getElementsByName('pokemonType'))
+  checkbox.value = arrayOfTypes[i];
+  checkbox.id = arrayOfTypes [i];
+
+  const labelPokemonType = document.createElement("label");
+  labelPokemonType.id = "labelType";
+  labelPokemonType.htmlFor = arrayOfTypes[i];
+  labelPokemonType.appendChild(document.createTextNode(arrayOfTypes[i]));
+
+  divPokemonType.appendChild(checkbox);
+  divPokemonType.appendChild(labelPokemonType);
+  pokemonFilterType.appendChild(divPokemonType);
+};
+
+//boton de busqueda
+const searchButton = document.createElement("button");
+searchButton.id = "boton-filtro";
+searchButton.innerHTML = "Search";
+//se agrega evento al boton
+searchButton.addEventListener("click", function(){
+    
+  const root = document.getElementById('root');
+  let checkedValue = null; 
+  //trae los 18 tipos del checkbox del arreglo de tipos de pokemon
+  const inputElements = document.getElementsByName('pokemonType');
+  //se inicializa un arreglo que tendra los tipos de pokemon seleccionados
+  const arrayOfSelectedPokemonType  = new Array();
+  //limpia la zona de los pokemones con un string vacio
+  root.innerHTML = '';
+  //este for llena el arreglo arrayOfFilteredPokemonType con los tipos de pokemon seleccionados en la busqueda
+  for(let i=0; i < inputElements.length ; ++i){
+    //este if es para revisar que elementos de inputElements estan seleccionados con una palomita
+    if(inputElements[i].checked){
+      checkedValue = inputElements[i].value;
+      arrayOfSelectedPokemonType.push(checkedValue);
+    }
+  }
+  //alert(inputElements.length);
+  //alert(arrayOfFilteredPokemonType.length);
+  //busca los pokemones que cumplan con los tipos seleccionados (o filtrados) en los checkbox
+  //Inicializamos la funcion que importamos, usando como param1 = arrayOfSelectedPokemonType y como param2 = allPokemon
+  const filteredDataByType = getPokemonByType(arrayOfSelectedPokemonType,allName);
+  //reutilizamos la funcion pokemonList ahora con el resultado de la funcion anterior
+  pokemonList(filteredDataByType);
+    
+});
+divPokemonType.appendChild(searchButton);
+
+//boton debilidad contra
+const weaknessesButton = document.createElement("button");
+weaknessesButton.id = "filtro-debilidad";
+weaknessesButton.innerHTML = "Weaknesses";
+//se agrega evento al boton
+weaknessesButton.addEventListener("click", function(){
+    
+  const root = document.getElementById('root');
+  let checkedValue = null; 
+  //trae los 18 tipos del checkbox del arreglo de tipos de pokemon
+  const inputElements = document.getElementsByName('pokemonType');
+  //se inicializa un arreglo que tendra los tipos de pokemon seleccionados
+  const arrayOfSelectedPokemonType  = new Array();
+  //limpia la zona de los pokemones con un string vacio
+  root.innerHTML = '';
+  //este for llena el arreglo arrayOfFilteredPokemonType con los tipos de pokemon seleccionados en la busqueda
+  for(let i=0; i < inputElements.length ; ++i){
+    //este if es para revisar que elementos de inputElements estan seleccionados con una palomita
+    if(inputElements[i].checked){
+      checkedValue = inputElements[i].value;
+      arrayOfSelectedPokemonType.push(checkedValue);
+    }
+  }
+  //alert(inputElements.length);
+  //alert(arrayOfFilteredPokemonType.length);
+  //busca los pokemones que cumplan con los tipos seleccionados (o filtrados) en los checkbox
+  //Inicializamos la funcion que importamos, usando como param1 = arrayOfSelectedPokemonType y como param2 = allPokemon
+  const filteredDataByWeaknesses = getPokemonByWeaknesses(arrayOfSelectedPokemonType,allName);
+  //reutilizamos la funcion pokemonList ahora con el resultado de la funcion anterior
+  pokemonList(filteredDataByWeaknesses);
+    
+});
+//se ubica donde queremos que este el boton
+divPokemonType.appendChild(weaknessesButton);
+
+
+//boton resistencia contra
+const resistantButton = document.createElement("button");
+resistantButton.id = "filtro-resistencia";
+resistantButton.innerHTML = "Resistant";
+//se agrega evento al boton
+resistantButton.addEventListener("click", function(){
+    
+  const root = document.getElementById('root');
+  let checkedValue = null; 
+  //trae los 18 tipos del checkbox del arreglo de tipos de pokemon
+  const inputElements = document.getElementsByName('pokemonType');
+  //se inicializa un arreglo que tendra los tipos de pokemon seleccionados
+  const arrayOfSelectedPokemonType  = new Array();
+  //limpia la zona de los pokemones con un string vacio
+  root.innerHTML = '';
+  //este for llena el arreglo arrayOfFilteredPokemonType con los tipos de pokemon seleccionados en la busqueda
+  for(let i=0; i < inputElements.length ; ++i){
+    //este if es para revisar que elementos de inputElements estan seleccionados con una palomita
+    if(inputElements[i].checked){
+      checkedValue = inputElements[i].value;
+      arrayOfSelectedPokemonType.push(checkedValue);
+    }
+  }
+  //alert(inputElements.length);
+  //alert(arrayOfFilteredPokemonType.length);
+  //busca los pokemones que cumplan con los tipos seleccionados (o filtrados) en los checkbox
+  //Inicializamos la funcion que importamos, usando como param1 = arrayOfSelectedPokemonType y como param2 = allPokemon
+  const filteredDataByResistance = getPokemonByResistant(arrayOfSelectedPokemonType,allName);
+  //reutilizamos la funcion pokemonList ahora con el resultado de la funcion anterior
+  pokemonList(filteredDataByResistance);
+    
+});
+//se ubica donde queremos que este el boton
+divPokemonType.appendChild(resistantButton);
+
