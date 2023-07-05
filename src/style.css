@@ -1,87 +1,223 @@
-*{
-    margin:0;
-    padding:0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
-#encabezado {
-    background-color: #386ABB;
-    border: 0px;
-    margin: 0px;
-    padding: 0px;
+/* --------------------Paleta de colores------------------------*/
+:root {
+    --color-root: rgba(218, 218, 223, 0.384);
+    --color-search: #F5F5F5;
+    --color-type: #E8E8E8;
+    --color-check: #D9D9D9;
+    --color-input: #F9A910;
+    --color-text-input: #1391CC;
+
+}
+
+/* -------------Estilos a header con un banner --------------*/
+/*Contenedor que ajusta el maximo de la pagina*/
+.content-header {
+    /*background-image: url(./img/Banner.png);*/
     width: 100%;
-    height:auto;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
 }
-#banner {
+
+.content-header img {
     width: 100%;
-    height: 100%;
-    margin: 0 auto;
-}
-#filtros {
-    
-   
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-   
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
-input#input-search {
-    margin: 10px ;
-}
+/* -------------Estilos al contenedor de las cards pokemon --------------*/
+/*Contenedor #root -- Selector por ID*/
+#root {
 
-aside {
-    background-color: aliceblue;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-  }
-
-li {
-    display: inline-block;
-    width: 75px;
-    margin: 3px;
-    border: 1px;
-    background-color: lightcyan;
-    border-radius: 5px;
-}
-    
-
-
-button{
-  background-color: white;
-  background-size: contain;
-  width: 90px;
-  height: 30px;
-  margin: 6px;
-  border-radius: 10px;
-}
-    
-#root{
-
-    background-image: url(/imagenes/fondo.png);
-    background-size: contain;
+    background-color: var(--color-root);
     padding: 35px;
     width: 100%;
-    height: 100%;
+    /*height: 100vh;*/
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
- 
+    justify-content: center;
+
 }
-.content-principal{
-    background-color:azure;
-    width: 200px;
-    height: 200px;
+
+/* ----------------Estilos a todas las cards de pokemon---------------------*/
+.content-principal {
+    width: 220px;
+    height: 220px;
+    margin: 30px;
+}
+
+.bug {background-image: url('img/cards/bug.png');}
+.grass {background-image: url('img/cards/gass.png');}
+.fairy {background-image: url('img/cards/fairy.png');}
+.dragon {background-image: url('img/cards/dragon.png');}
+.dark {background-image: url('img/cards/dark.png');}
+.fire {background-image: url('img/cards/fire.png');}
+.water {background-image: url('img/cards/water.png');}
+.electric {background-image: url('img/cards/electric.png');}
+.fighting {background-image: url('img/cards/fighting.png');}
+.flying {background-image: url('img/cards/flying.png');}
+.ghost {background-image: url('img/cards/ghost.png');}
+.ground {background-image: url('img/cards/ground.png');}
+.poison {background-image: url('img/cards/poison.png');}
+.psychic {background-image: url('img/cards/psychic.png');}
+.rock {background-image: url('img/cards/rock.png');}
+.normal {background-image: url('img/cards/normal.png');}
+.ice {background-image: url('img/cards/ice.png');}
+.steel {background-image: url('img/cards/steel.png');}
+
+.content-card {
+    background-size: cover;
+}
+
+.container-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 30px;
+    box-shadow: 1px 1px 5px 1px rgba(231, 225, 225, 0.75);
+    -webkit-box-shadow: 1px 1px 5px 1px rgba(202, 194, 194, 0.75);
+    -moz-box-shadow: 1px 1px 5px 1px rgba(207, 199, 199, 0.75);
+}
+
+.container-cards .num-pokemon {
+    flex: 1;
+    padding-right: 155px;
+    margin-top: 32px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.content-info {
+    /*background-color:#0975f0;*/
     margin: 5px;
+}
+
+.content-info .name-pokemon {
+    text-align: center;
+    font-size: 20px;
 
 }
 
+.content-info .type-pokemon {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 
+.type-pokemon img {
+    width: 2.5rem;
+    margin: 5px;
+}
+
+/* ----------------------Estilos a contenedor filtrar----------------------------*/
+.content-search {
+    width: 100%;
+    background-color: var(--color-search);
+    height: 180px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.content-input {
+    /* background-color: #1391CC;*/
+    width: 50%;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchId {
+    width: 90%;
+    height: 50px;
+    outline: none;
+    border: none;
+    color: var(--color-text-input);
+    font-size: 18px;
+    box-shadow: 0px 10px 10px -6px var(--color-check);
+}
+
+#searchId:hover {
+    border: 2px solid var(--color-input);
+}
+
+#searchId::placeholder {
+    padding: 5px;
+    font-size: 14px;
+    color: var(--color-text-input);
+}
+
+.input-img {
+    background-color: var(--color-input);
+    width: 65px;
+    height: 50px;
+    position: relative;
+}
+
+.content-input .input-img img {
+    width: 45px;
+    height: 45px;
+    margin: 5px;
+    background-position: center center;
+}
+
+.content-search #pokemonSelect {
+    width: 150px;
+    height: 50px;
+    margin: 20px;
+    outline: none;
+    border: none;
+    appearance: none;
+    text-align:center;
+    background-image: url('img/flecha-hacia-abajo.png');
+    background-size:18px;
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 1.5em);
+    background-position-y:center;
+    padding-right: 15px;
+}
+.content-search #candySelect {
+    width: 180px;
+    height: 50px;
+    margin: 20px;
+    outline: none;
+    border: none;
+    appearance: none;
+    text-align:center;
+    background-image: url('img/flecha-hacia-abajo.png');
+    background-size:18px;
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 1.5em);
+    background-position-y:center;
+    padding-right: 15px;
+}
+
+.content-footer {
+    width: 100%;
+    background-color: chartreuse;
+    height: 200px;
+}
+
+/* ----------responsive desing ---------*/
+@media (max-width:768px) {
+    .content-search {
+        flex-direction: column;
+    }
+
+}
