@@ -11,7 +11,11 @@ const bodyPage = document.querySelector('body');
 //1. Insertar Encabezado al Body
 //1.1 Variable que crea el elemento header
 const headerPokemon = document.createElement('header');
-headerPokemon.classList.add("class", "content-header")
+headerPokemon.classList.add("class", "content-header");
+const imgElement = document.createElement('img');
+imgElement.src = 'img/Banner.png';
+imgElement.alt = 'Banner pokemon';
+headerPokemon.appendChild(imgElement);
 //1.2 Varible que nos ayuda a insertar el Encabezado al inicio del Body
 const headerFirst = bodyPage.firstChild;
 bodyPage.insertBefore(headerPokemon, headerFirst);
@@ -33,16 +37,6 @@ const TypePokemon = (arrayType) => {
   });
   return imgEachPokemon;
 };
-//Iconos por tipo de pokemon
-/*const cardsPokemon = (arrayCards) => {
-  let imgEachPokemon = '';
-  arrayCards.forEach((cardsElement) => {
-    imgEachPokemon += `<img src="img/cards/${cardsElement}.png" alt=" type pokemon"/>`;
-  });
-  return imgEachPokemon;
-};${cardsPokemon(pokemon.type)}*/
-
-
 const pokemonList = (list) => {
     // let countPokemon = 0;
  
@@ -72,10 +66,24 @@ const contentSearch = document.createElement("div");
 contentSearch.classList.add("class", "content-search");
 //const searchDiv = bodyPage.firstChild;
 bodyPage.insertBefore(contentSearch, headerFirst);
+const inputSearch = document.createElement("div");
+inputSearch.classList.add("class", "content-input");
+
 const searchInput = document.createElement("input");
 searchInput.type = 'search';
-searchInput.placeholder = 'Buscando ...';
-contentSearch.appendChild(searchInput);
+searchInput.id="searchId";
+searchInput.placeholder = 'Ingresa el nombre del pokemon ...';
+const inputImg = document.createElement("div");
+inputImg.classList.add("class", "input-img");
+const imgball = document.createElement('img');
+imgball.src = 'img/pokebolaSearch.png';
+imgball.alt = 'icono pokebola';
+
+inputImg.appendChild(imgball);
+inputSearch.appendChild(searchInput);
+inputSearch.appendChild(inputImg);
+contentSearch.appendChild(inputSearch);
+
 
 searchInput.addEventListener('input', () => {
     const resulPokemon = filterCards(allName,searchInput.value);
@@ -116,6 +124,7 @@ mensajeOrder.text = "order";
 select.add(mensajeOrder);
 
 const option1 = document.createElement("option");
+option1.id ="option1";
 option1.value = "A-Z";
 option1.text = "A-Z";
 select.add(option1);
