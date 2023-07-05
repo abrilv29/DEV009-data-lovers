@@ -348,4 +348,3 @@ resistantButton.addEventListener("click", function(){
 });
 //se ubica donde queremos que este el boton
 divPokemonType.appendChild(resistantButton);
-
