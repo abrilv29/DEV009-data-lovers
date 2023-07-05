@@ -100,7 +100,6 @@ searchInput.addEventListener('input', () => {
     }
 });
 
-
 //Mensaje de no encontrado
 
 const mensajeError = () => {
