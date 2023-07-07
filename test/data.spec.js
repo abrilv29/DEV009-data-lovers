@@ -1,5 +1,4 @@
-import { getPokemonByType } from '../src/data.js';
-
+import { filterCards } from '../src/data.js';
 
 const objPokemon = [{
   "num": "001",
@@ -75,7 +74,7 @@ const objPokemon = [{
 },
 ];
 
-describe('example', () => {
+describe('filterCards', () => {
   it('is a function', () => {
     expect(typeof example).toBe('function');
   });
