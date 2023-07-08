@@ -25,11 +25,17 @@ bodyPage.insertBefore(headerPokemon, headerFirst);
 /* ------------------------------ ESTRUCTURA DEL CARDS POKEMON  -------------------------------------- */
 //GUARDAMOS LA DATA EN UNA VARIABLE
 const allName = data.pokemon; // data pokemon
-console.log(allName);
+//console.log(allName);
 
 //const filtro = filterCards(allName); // data.js funciones
+
 //CONTENEDOR DONDE SE MUESTRAN LAS CARDS POKEMON
 const root = document.getElementById('root');
+
+//contenedor de la ventana Modal
+const contentModal = document.createElement('section');
+contentModal.classList.add('content-modal');
+
 
 //Iconos por tipo de pokemon
 const TypePokemon = (arrayType) => {
@@ -39,6 +45,8 @@ const TypePokemon = (arrayType) => {
   });
   return imgEachPokemon;
 };
+
+// function para crear las cards Pokemon
 const pokemonList = (list) => {
   // let countPokemon = 0;
 
@@ -54,17 +62,53 @@ const pokemonList = (list) => {
          <div class="type-pokemon">${TypePokemon(pokemon.type)}</div>
          </div>
          </div>`;
-         content.addEventListener("click", () => {
-          const show = showModal(pokemon);
-          show.classList.add('modal');
-        });
-
+    content.addEventListener('click', ()=>{
+      const viewModal = showModal(pokemon);
+      viewModal.classList.add('modal--show');
+      content.appendChild(contentModal);
+    });
+    
     //countPokemon += 1;
     root.appendChild(content);
 
   });
 };
 pokemonList(allName);
+
+
+
+
+const showModal = (dataPoke) => {
+
+  const sectionModal = document.createElement('div');
+  sectionModal.classList.add('modal');
+  console.log("hola");
+  sectionModal.innerHTML = `
+                  <div class="modal__container ${dataPoke.type[0]}">
+                  <div class="modal__header">
+                  <img src="${dataPoke.img}" class="modal__img">
+                  <p class="modal__num">#${dataPoke.num}</p>
+                  <p class="modal__title">${dataPoke.name}</p>
+                  <p class="modal__paragraph">${dataPoke.about} </p>
+                  </div>
+                  <div class="modal__body">
+                  <p class="modal__type"><img src="img/huevo.png"> Egg: ${dataPoke.egg} </p>
+                  <p class="modal__height"><img src="img/cinta-metrica.png"> Height:${dataPoke.size.height} </p>
+                  <p class="modal__weight"><img src="img/bar.png"> Weight:${dataPoke.size.weight} </p>
+                  <p class="modal__stast"><img src="img/pokecoin.png"> MAX-CP:${dataPoke.stats['max-cp']} </p>
+                  <p class="modal__stast"><img src="img/puno.png"> MAX-HP:${dataPoke.stats['max-hp']} </p>
+                  </div>
+                  <div class="evolutions"></div>
+                  <a href="#" class="modal__close">Cerrar Modal</a>
+                </div>`;
+  contentModal.appendChild(sectionModal);
+
+
+
+  return sectionModal;
+
+};
+
 
 /* ------------------------------ ESTRUCTURA DEL SEARCH NAME  -------------------------------------- */
 //Buscar los pokemones por nombre usando un input
@@ -93,6 +137,7 @@ contentSearch.appendChild(inputSearch);
 
 searchInput.addEventListener('input', () => {
   const resulPokemon = filterCards(allName, searchInput.value);
+  //console.log(resulPokemon);
   if (resulPokemon.length === 0) {
     mensajeError();
   } else {
@@ -155,19 +200,21 @@ select.addEventListener('change', () => {
   pokemonList(filterOrder(allName,orderSelect));*/
 
   switch (select.value) {
-    case 'A-Z':
-      root.innerHTML = '';
-      pokemonList(filterOrder(allName, 'A-Z'));
-      break;
-    case 'Z-A':
-      root.innerHTML = '';
-      pokemonList(filterOrder(allName, 'Z-A'));
-      break;
-    case 'num':
-      root.innerHTML = '';
-      pokemonList(filterOrder(allName, 'num'));
-      break;
-    default:
+  case 'A-Z':
+    root.innerHTML = '';
+    pokemonList(filterOrder(allName, 'A-Z'));
+    break;
+  case 'Z-A':
+    root.innerHTML = '';
+    pokemonList(filterOrder(allName, 'Z-A'));
+    break;
+  case 'num':
+    root.innerHTML = '';
+    pokemonList(filterOrder(allName, 'num'));
+    break;
+  default:
+
+
   }
 
 });
@@ -178,30 +225,11 @@ select.addEventListener('change', () => {
 const evolutions = filtrarEvoluciones(allName);
 console.log(evolutions);
 
-const divModalPricipal = document.createElement("div");
-divModalPricipal.classList.add("container-modal-principal");
 
 
-const showModal = (poke) => {
-const divModal = document.createElement('div');
-divModal.classList.add("content-modal");
 
-  divModal.innerHTML = 
-`<div class="modal-flex">
-<i class="close fas fa-times-circle"></i>
-<div class="container-modal ${poke.type[0]} ">
-<i class="close fas fa-times-circle"></i>
-<div class="img-modal"><img src="${poke.img}"></div>
-<div class="modal-info">
-<p class="poke-name-card bold">${poke.name} N°<spam>${poke.num}</spam></p>
-<p class="about">${poke.about}</p>
-</div>
-</div>`;
 
-divModalPricipal.appendChild(divModal);
 
-  return divModal;
-};
 
 
 
@@ -220,7 +248,7 @@ divModalPricipal.appendChild(divModal);
 const arrayOfTypes = ["grass", "poison", "normal", "water", "electric", "fighting", "fairy", "ice", "flying", "psychic", "fire", "steel", "bug", "rock", "dragon", "dark", "ground", "ghost"];
 const divPokemonType = document.createElement("div");
 divPokemonType.id = "divPokemonType";
-bodyPage.insertBefore(divPokemonType,contentSearch);
+bodyPage.insertBefore(divPokemonType, contentSearch);
 
 const pokemonFilterType = document.createElement("fieldset");
 const labelPokemonFilterType = document.createElement("legend");
@@ -246,7 +274,7 @@ for (let i = 0; i < arrayOfTypes.length; i++) {
   divPokemonType.appendChild(checkbox);
   divPokemonType.appendChild(labelPokemonType);
   pokemonFilterType.appendChild(divPokemonType);
-};
+}
 
 //boton de busqueda
 const searchButton = document.createElement("button");
@@ -367,7 +395,7 @@ window.onscroll = () => {
   if (document.documentElement.scrollTop > 100) {
     divScroll.classList.add('show');
   } else {
-   divScroll.classList.remove('show');
+    divScroll.classList.remove('show');
   }
 };
 divScroll.addEventListener('click', () => {
