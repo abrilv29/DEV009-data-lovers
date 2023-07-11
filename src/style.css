@@ -244,11 +244,19 @@ button {
 li {
     background-color: var(--color-search);
     display: inline-block;
-    width: 75px;
-    margin: 3px;
-    border: 1px;   
+    width: 120px;
+    margin: 5px;
+    border: 1px; 
     border-radius: 5px;
 }
 label#labelType {
-    margin-left: px;
+    margin-left: 3px;
+    margin-right: 2px;
+}
+
+li img[alt=' type pokemon'] {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    
 }
