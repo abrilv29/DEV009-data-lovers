@@ -1,8 +1,9 @@
-import { filterOrder } from './data.js';
-import { filterCards } from './data.js';
-import { getPokemonByType } from './data.js';
-import { getPokemonByResistant } from './data.js';
-import { getPokemonByWeaknesses } from './data.js';
+import { filterOrder,
+  filterCards,
+  getPokemonByType,
+  getPokemonByResistant,
+  getPokemonByWeaknesses
+} from './data.js';
 import data from './data/pokemon/pokemon.js';
 /* ------------------------------ ESTRUCTURA DEL HTML  -------------------------------------- */
 //CREACION DEL HEADER
@@ -76,7 +77,7 @@ const pokemonList = (list) => {
 pokemonList(allName);
 
 
-const showModal = (dataPoke,evolutions) => {
+const showModal = (dataPoke) => {
 
   const sectionModal = document.createElement('div');
   sectionModal.classList.add('modal');
@@ -117,9 +118,7 @@ const showModal = (dataPoke,evolutions) => {
   const modalEvolutions = sectionModal.querySelector('.modal__evolutions');
   if (evolutions.nextEvolutions.length > 0) {
     const nextEvolutionsTitle = document.createElement('p');
-    nextEvolutionsTitle.textContent = `Next Evolutions: `;
-    const imgPoke = document.createElement('img');
-    imgPoke.textContent = dataPoke.img;
+    nextEvolutionsTitle.textContent = `Next Evolutions:${dataPoke.img}`;
     modalEvolutions.appendChild(nextEvolutionsTitle);
   
     evolutions.nextEvolutions.forEach((evolution) => {
@@ -143,50 +142,9 @@ const showModal = (dataPoke,evolutions) => {
       evolutionElement.textContent = `Name: ${evolution.name}, Num: ${evolution.num}, Candy Cost: ${evolution.candyCost}`;
       modalEvolutions.appendChild(evolutionElement);
     });
-  }
+  }*/
   return sectionModal;
-};*/
-
-//Iniciamos la funcion para filtras  los pokemones por evolution
-/*const filtrarEvoluciones = (arrayPokemon, pokemonName) => {
-  const evolutions = {
-    name: pokemonName,
-    prevEvolutions: [],
-    nextEvolutions: []
-  };
-
-  function procesarEvolucion(evolution) {
-    const { name, num, "candy-cost": candyCost, "prev-evolution": prevEvolutions, "next-evolution": nextEvolutions } = evolution;
-
-    if (prevEvolutions && prevEvolutions.length > 0) {
-      prevEvolutions.forEach((prevEvolution) => {
-        evolutions.prevEvolutions.push({
-          name: name,
-          num: num,
-          candyCost: candyCost
-        });
-      });
-    }
-
-    if (nextEvolutions && nextEvolutions.length > 0) {
-      nextEvolutions.forEach((nextEvolution) => {
-        evolutions.nextEvolutions.push({
-          name: nextEvolution.name,
-          num: nextEvolution.num,
-          candyCost: nextEvolution['candy-cost']
-        });
-      });
-    }
-  }
-
-  arrayPokemon.forEach((pokemon) => {
-    if (pokemon.evolution && pokemon.name === pokemonName) {
-      procesarEvolucion(pokemon.evolution);
-    }
-  });
-
-  return evolutions;
-};*/
+};
 
 /* ------------------------------ ESTRUCTURA DEL SEARCH NAME  -------------------------------------- */
 //Buscar los pokemones por nombre usando un input
@@ -232,9 +190,9 @@ const mensajeError = () => {
   const divError = document.createElement("div");
   divError.classList.add("content-error");
   const parrafo = document.createElement("p");
-  parrafo.innerHTML = 'No existe ese pokemon';
+  parrafo.innerHTML = 'No found pokemon';
   const imgError = document.createElement("img");
-  imgError.src = './img/psyduck.gif';
+  imgError.src = 'img/psyduck.gif';
   divError.appendChild(parrafo);
   divError.appendChild(imgError);
   root.appendChild(divError);
@@ -336,22 +294,6 @@ divEvoluciones.addEventListener('click', function () {
 
   
 });*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*-----------------ESTRUCTURA FILTRO POKEMON BY TYPE--------------------------*/
 
 const arrayOfTypes = ["grass", "poison", "normal", "water", "electric", "fighting", "fairy", "ice", "flying", "psychic", "fire", "steel", "bug", "rock", "dragon", "dark", "ground", "ghost"];
