@@ -300,6 +300,7 @@ label#labelType {
 }
 
 .modal--show{
+    display: none;
     opacity: 1;
     pointer-events: unset;
     transition: opacity .6s;
@@ -311,31 +312,30 @@ label#labelType {
     margin: auto;
     width: 90%;
     max-width: 600px;
-    max-height: 90%;
+    max-height: 100%;
     background-color: #fff;
     border-radius: 6px;
     padding: 3em 2.5em;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     transform: var(--transform);
     transition:var(--transition);
 }
+.modal__close{
+    position: relative;
+    margin-left: auto;
+}
 .modal__container .modal__header{
-    /*background-color: #F9A910;*/
-
-    width: 70%;
+    width: 100%;
+    background-color: var(--color-type);
+    border-radius: 8px 8px 0px 0px;
 }
-.modal__body{
-    /*background-color: #1391CC;*/
-
-    width: 30%;
-}
-
 .modal__title{
-    font-size: 18px;
+    font-size: 24px;
+    text-align: center;
+    margin: 5px;
 }
 
 .modal__paragraph{
@@ -349,8 +349,51 @@ label#labelType {
     width: 78%;
     max-width: 200px;
 }
+.modal__num{
+    flex: 1;
+    padding-right: 420px;
+    margin-top: 32px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.modal__body{
+    /*background-color: #1391CC;*/
+    width: 100%;
+    background-color: var(--color-type);
+    border-radius: 0px 0px 8px 8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
 
+.modal__type{
+    margin: 10px;
+    padding: 5px;
+    background-color: var(--color-search);
+    border-radius: 7px;
+}
+.modal__height{
+    margin: 10px;
+    padding: 5px;
+    background-color: var(--color-search);
+    border-radius: 7px;
+}
+.modal__weight{
+    margin: 10px;
+    padding: 5px;
+    background-color: var(--color-search);
+    border-radius: 7px;
 
+}
+.modal__stast{
+    margin: 10px;
+    padding: 5px;
+    background-color: var(--color-search);
+    border-radius: 7px;
+
+}
 
 
 

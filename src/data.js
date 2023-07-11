@@ -25,40 +25,6 @@ export const filterOrder = (arrayPokemon, orderSelect) => {
   return orderName;
 
 };
-//Inicio de la funcion evolution
-export function filtrarEvoluciones(arrayPokemon) {
-  const evolutions = [];
-
-  function procesarEvolucion(evolution) {
-    const { name, num, "candy-cost": candyCost,"prev-evolution": prevEvolutions, "next-evolution": nextEvolutions } = evolution;
-
-    evolutions.push({
-      name,
-      num,
-      candyCost
-    });
-
-    if (prevEvolutions && prevEvolutions.length > 0) {
-      prevEvolutions.forEach((prevEvolutions) => {
-        procesarEvolucion(prevEvolutions);
-      });
-    }
-
-    if (nextEvolutions && nextEvolutions.length > 0) {
-      nextEvolutions.forEach((nextEvolution) => {
-        procesarEvolucion(nextEvolution);
-      });
-    }
-  }
-
-  arrayPokemon.forEach((pokemon) => {
-    if (pokemon.evolution) {
-      procesarEvolucion(pokemon.evolution);
-    }
-  });
-
-  return evolutions;
-}
 //Inicializamos la funcion con dos parametros: param1 = arrayOfSelectedPokemonType, y param2 = pokemonList
 export const getPokemonByType = (arrayOfSelectedPokemonType, pokemonList) => {
   let pokemonFilteredList = null;

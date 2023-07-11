@@ -1,4 +1,3 @@
-import { filtrarEvoluciones } from './data.js';
 import { filterOrder } from './data.js';
 import { filterCards } from './data.js';
 import { getPokemonByType } from './data.js';
@@ -46,6 +45,7 @@ const TypePokemon = (arrayType) => {
   return imgEachPokemon;
 };
 
+
 // function para crear las cards Pokemon
 const pokemonList = (list) => {
   // let countPokemon = 0;
@@ -76,18 +76,17 @@ const pokemonList = (list) => {
 pokemonList(allName);
 
 
-
-
-const showModal = (dataPoke) => {
+const showModal = (dataPoke,evolutions) => {
 
   const sectionModal = document.createElement('div');
   sectionModal.classList.add('modal');
   console.log("hola");
   sectionModal.innerHTML = `
                   <div class="modal__container ${dataPoke.type[0]}">
-                  <div class="modal__header">
-                  <img src="${dataPoke.img}" class="modal__img">
+                  <img src="img/cancelar.png" class="modal__close">
                   <p class="modal__num">#${dataPoke.num}</p>
+                  <img src="${dataPoke.img}" class="modal__img">
+                  <div class="modal__header">
                   <p class="modal__title">${dataPoke.name}</p>
                   <p class="modal__paragraph">${dataPoke.about} </p>
                   </div>
@@ -98,17 +97,96 @@ const showModal = (dataPoke) => {
                   <p class="modal__stast"><img src="img/pokecoin.png"> MAX-CP:${dataPoke.stats['max-cp']} </p>
                   <p class="modal__stast"><img src="img/puno.png"> MAX-HP:${dataPoke.stats['max-hp']} </p>
                   </div>
-                  <div class="evolutions"></div>
-                  <a href="#" class="modal__close">Cerrar Modal</a>
+                  <p class="modal__evolu">Evolution: </p>
+                  <div class="modal__evolutions"></div>
                 </div>`;
   contentModal.appendChild(sectionModal);
+              
+  sectionModal.style.display = 'block';
 
-
-
+  const modalClose = document.querySelector('.modal__close');
+  window.addEventListener('click', (evento) => {
+    if (evento.target === modalClose) {
+      sectionModal.classList.remove('modal--show');
+      contentModal.innerHTML = '';
+    }
+  });
+  // Evoluciones
+  /*evolutions = filtrarEvoluciones(allName, dataPoke.name);
+  console.log(evolutions);
+  const modalEvolutions = sectionModal.querySelector('.modal__evolutions');
+  if (evolutions.nextEvolutions.length > 0) {
+    const nextEvolutionsTitle = document.createElement('p');
+    nextEvolutionsTitle.textContent = `Next Evolutions: `;
+    const imgPoke = document.createElement('img');
+    imgPoke.textContent = dataPoke.img;
+    modalEvolutions.appendChild(nextEvolutionsTitle);
+  
+    evolutions.nextEvolutions.forEach((evolution) => {
+      const evolutionElement = document.createElement('div');
+      evolutionElement.textContent = `Name: ${evolution.name}, Num: ${evolution.num}, Candy Cost: ${evolution.candyCost}`;
+      modalEvolutions.appendChild(evolutionElement);
+    });
+  } else if (evolutions.prevEvolutions.length === 0) {
+    const noEvolutionsMessage = document.createElement('p');
+    noEvolutionsMessage.textContent = 'No evolution found.';
+    modalEvolutions.appendChild(noEvolutionsMessage);
+  }
+  
+  if (evolutions.prevEvolutions.length > 0) {
+    const prevEvolutionsTitle = document.createElement('p');
+    prevEvolutionsTitle.textContent = `Previous Evolutions:`;
+    modalEvolutions.appendChild(prevEvolutionsTitle);
+  
+    evolutions.prevEvolutions.forEach((evolution) => {
+      const evolutionElement = document.createElement('div');
+      evolutionElement.textContent = `Name: ${evolution.name}, Num: ${evolution.num}, Candy Cost: ${evolution.candyCost}`;
+      modalEvolutions.appendChild(evolutionElement);
+    });
+  }
   return sectionModal;
+};*/
 
-};
+//Iniciamos la funcion para filtras  los pokemones por evolution
+/*const filtrarEvoluciones = (arrayPokemon, pokemonName) => {
+  const evolutions = {
+    name: pokemonName,
+    prevEvolutions: [],
+    nextEvolutions: []
+  };
 
+  function procesarEvolucion(evolution) {
+    const { name, num, "candy-cost": candyCost, "prev-evolution": prevEvolutions, "next-evolution": nextEvolutions } = evolution;
+
+    if (prevEvolutions && prevEvolutions.length > 0) {
+      prevEvolutions.forEach((prevEvolution) => {
+        evolutions.prevEvolutions.push({
+          name: name,
+          num: num,
+          candyCost: candyCost
+        });
+      });
+    }
+
+    if (nextEvolutions && nextEvolutions.length > 0) {
+      nextEvolutions.forEach((nextEvolution) => {
+        evolutions.nextEvolutions.push({
+          name: nextEvolution.name,
+          num: nextEvolution.num,
+          candyCost: nextEvolution['candy-cost']
+        });
+      });
+    }
+  }
+
+  arrayPokemon.forEach((pokemon) => {
+    if (pokemon.evolution && pokemon.name === pokemonName) {
+      procesarEvolucion(pokemon.evolution);
+    }
+  });
+
+  return evolutions;
+};*/
 
 /* ------------------------------ ESTRUCTURA DEL SEARCH NAME  -------------------------------------- */
 //Buscar los pokemones por nombre usando un input
@@ -222,11 +300,42 @@ select.addEventListener('change', () => {
 
 /* ------------------------------ ESTRUCTURA EVOLUTION CARAMEL  -------------------------------------- */
 
-const evolutions = filtrarEvoluciones(allName);
-console.log(evolutions);
+//const evolutions = getEvolution(allName);
+//console.log(evolutions);
 
 
+/*const divEvoluciones = document.createElement('div');
+const cont = document.createElement('p');
+cont.innerHTML="evolution";
+divEvoluciones.appendChild(cont);
+contentSearch.appendChild(divEvoluciones);
+// Paso 3 y 4: Crear y añadir elementos <option> al <select>
 
+
+// Manejar el evento de cambio en el select
+divEvoluciones.addEventListener('click', function () {
+  const evolutionPoke = filtrarEvoluciones(allName, divEvoluciones);
+  console.log(evolutionPoke);
+
+  // Crear el contenido HTML
+  let html = "";
+  evolutionPoke.forEach((evolution) => {
+    root.innerHTML='';
+    if (evolution.name && evolution.num && evolution.candyCost) {// me ayuda a quitar el valor undefined
+      html += `
+      <div>
+        <img src="${allName.img}" alt="${evolution.name}">
+        <p>Name: ${evolution.name}, Num: ${evolution.num}, Candy Cost: ${evolution.candyCost}</p>
+      </div>
+    `;
+    }
+  });
+
+  // Establecer el contenido del div
+  divEvoluciones.innerHTML = html;
+
+  
+});*/
 
 
 
