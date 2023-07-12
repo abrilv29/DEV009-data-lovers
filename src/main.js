@@ -366,14 +366,14 @@ percentageButton.addEventListener("click", function () {
   for (let i = 0; i < arrayOfCountersOfPokemon.length; ++i) {
     if (arrayOfCountersOfPokemon[i] !== Math.max(...arrayOfCountersOfPokemon)) {
       
-        if((filteredUnique[i].join().includes('ice') ||
+      if((filteredUnique[i].join().includes('ice') ||
            filteredUnique[i].join().includes('steel') ||
            filteredUnique[i].join().includes('flying')) & flagCombinedType)
-        {
-          console.log('No se le restara nada a ningun elemento del arreglo de contadores de pokemon porque no existe un filtro de un solo tipo de pokemon, solo combinados');
-          sumOfCombinations = 0;
-          break;
-        }
+      {
+        console.log('No se le restara nada a ningun elemento del arreglo de contadores de pokemon porque no existe un filtro de un solo tipo de pokemon, solo combinados');
+        sumOfCombinations = 0;
+        break;
+      }
 
       sumOfCombinations = sumOfCombinations + arrayOfCountersOfPokemon[i];
     }
@@ -386,7 +386,7 @@ percentageButton.addEventListener("click", function () {
 
   const sum = arrayOfCountersOfPokemon.reduce((a,b) => a + b);
   console.log(sum);
-  let percentages = arrayOfCountersOfPokemon.map(x => (x / sum) * 100);
+  const percentages = arrayOfCountersOfPokemon.map(x => (x / sum) * 100);
   console.log(percentages); 
 
 
