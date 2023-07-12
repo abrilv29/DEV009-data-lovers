@@ -208,10 +208,37 @@
     padding-right: 15px;
 }
 
+.content-error p{
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: var(--color-text-input);
+}
+/*-----------estilos footer----------*/
 .content-footer {
     width: 100%;
-    background-color: chartreuse;
-    height: 200px;
+    padding: 20px;
+    background-color: #B1B1B1;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    text-align: center;
+}
+.content-img{
+    border-right:1px solid #fff;
+    width: 50%;
+    padding: 20px;
+}
+.content-img img{
+    width: 130px;
+}
+.content-text{
+    width: 50%;
+    padding: 15px;
+}
+.content-text img{
+    width: 50px;
 }
 
 
@@ -292,6 +319,8 @@ label#labelType {
     bottom: 0;
     background-color: #111111bd;
     display: flex;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
     pointer-events: none;
     transition: opacity .6s .9s;
@@ -316,6 +345,7 @@ label#labelType {
     background-color: #fff;
     border-radius: 6px;
     padding: 3em 2.5em;
+    margin: 30px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -352,7 +382,7 @@ label#labelType {
 .modal__num{
     flex: 1;
     padding-right: 420px;
-    margin-top: 32px;
+    margin-top: 25px;
     font-weight: bold;
     font-size: 20px;
 }
@@ -402,5 +432,15 @@ label#labelType {
     .content-search {
         flex-direction: column;
     }
-
+    .modal__container{
+        margin: 20px auto;
+        height: auto;
+    }
+   
+}
+@media (max-width:1200px) {
+    .modal__container{
+        margin: 20px auto;
+    }
+   
 }

@@ -113,38 +113,16 @@ const showModal = (dataPoke) => {
     }
   });
   // Evoluciones
-  /*evolutions = filtrarEvoluciones(allName, dataPoke.name);
-  console.log(evolutions);
-  const modalEvolutions = sectionModal.querySelector('.modal__evolutions');
-  if (evolutions.nextEvolutions.length > 0) {
-    const nextEvolutionsTitle = document.createElement('p');
-    nextEvolutionsTitle.textContent = `Next Evolutions:${dataPoke.img}`;
-    modalEvolutions.appendChild(nextEvolutionsTitle);
-  
-    evolutions.nextEvolutions.forEach((evolution) => {
-      const evolutionElement = document.createElement('div');
-      evolutionElement.textContent = `Name: ${evolution.name}, Num: ${evolution.num}, Candy Cost: ${evolution.candyCost}`;
-      modalEvolutions.appendChild(evolutionElement);
-    });
-  } else if (evolutions.prevEvolutions.length === 0) {
-    const noEvolutionsMessage = document.createElement('p');
-    noEvolutionsMessage.textContent = 'No evolution found.';
-    modalEvolutions.appendChild(noEvolutionsMessage);
-  }
-  
-  if (evolutions.prevEvolutions.length > 0) {
-    const prevEvolutionsTitle = document.createElement('p');
-    prevEvolutionsTitle.textContent = `Previous Evolutions:`;
-    modalEvolutions.appendChild(prevEvolutionsTitle);
-  
-    evolutions.prevEvolutions.forEach((evolution) => {
-      const evolutionElement = document.createElement('div');
-      evolutionElement.textContent = `Name: ${evolution.name}, Num: ${evolution.num}, Candy Cost: ${evolution.candyCost}`;
-      modalEvolutions.appendChild(evolutionElement);
-    });
-  }*/
+  // Mostrar información de evolución en la ventana modal
+  /*const evolutionsContainer = sectionModal.querySelector('.modal__evolutions');
+  const evolution = filterEvolutionData(allName,evolutionsContainer);
+  console.log(evolution);*/
+ 
   return sectionModal;
 };
+
+
+
 
 /* ------------------------------ ESTRUCTURA DEL SEARCH NAME  -------------------------------------- */
 //Buscar los pokemones por nombre usando un input
@@ -190,7 +168,7 @@ const mensajeError = () => {
   const divError = document.createElement("div");
   divError.classList.add("content-error");
   const parrafo = document.createElement("p");
-  parrafo.innerHTML = 'No found pokemon';
+  parrafo.innerHTML = 'No found pokemon !!!';
   const imgError = document.createElement("img");
   imgError.src = 'img/psyduck.gif';
   divError.appendChild(parrafo);
@@ -455,3 +433,42 @@ divScroll.addEventListener('click', () => {
     behavior: 'smooth',
   });
 });
+
+/*---------------------------------------------- Diseño del footer ------------------------------------------------------*/
+const footer = document.createElement('footer');
+footer.classList.add('content-footer');
+bodyPage.appendChild(footer);
+
+const footerDiv1 = document.createElement('div');
+footerDiv1.classList.add('content-img');
+const imgFooter = document.createElement('img');
+imgFooter.classList.add("img-logo");
+imgFooter.src = 'img/pokemon.png';
+imgFooter.alt = 'logo pokemon go';
+footerDiv1.appendChild(imgFooter);
+footer.appendChild(footerDiv1);
+
+const footerDiv2 = document.createElement('div');
+footerDiv2.classList.add('content-text');
+const imgFooter1 = document.createElement("img");
+imgFooter1.src = 'img/pikachu.png';
+imgFooter1.alt = 'pikachu';
+const parrafo1 = document.createElement('p');
+parrafo1.textContent = "Astrid Andrea Bolaños Gracia"
+footerDiv2.appendChild(imgFooter1);
+footerDiv2.appendChild(parrafo1);
+const imgFooter2 = document.createElement("img");
+imgFooter2.src = 'img/snorlax.png';
+imgFooter2.alt = 'pikachu';
+const parrafo2 = document.createElement('p');
+parrafo2.textContent = "Abril Vargas Cordova"
+footerDiv2.appendChild(imgFooter2);
+footerDiv2.appendChild(parrafo2);
+footer.appendChild(footerDiv2);
+
+
+
+
+
+
+
