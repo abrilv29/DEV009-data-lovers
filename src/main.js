@@ -350,3 +350,109 @@ resistantButton.addEventListener("click", function(){
 //se ubica donde queremos que este el boton
 divPokemonType.appendChild(resistantButton);
 
+<<<<<<< HEAD
+=======
+
+/*-------------------------------------------boton porcentajes-------------- */
+const percentageButton = document.createElement("button");
+percentageButton.id = "boton-filtro";
+percentageButton.innerHTML = "Porcentaje";
+
+let myChart = null;
+
+percentageButton.addEventListener("click", function () {
+
+  const root = document.getElementById('root');
+  let checkedValue = null;
+  const inputElements = document.getElementsByName('pokemonType');
+  const arrayOfSelectedPokemonType = new Array();
+  root.innerHTML = '';
+  for (let i = 0; i < inputElements.length; ++i) {
+    if (inputElements[i].checked) {
+      checkedValue = inputElements[i].value;
+      arrayOfSelectedPokemonType.push(checkedValue);
+    }
+  }
+  const filteredDataByType = getPokemonByType(arrayOfSelectedPokemonType, allName);
+
+  const filteredUnique = getPokemonUniqueType(filteredDataByType);
+  const arrayOfCountersOfPokemon = [];
+  let counter = 0 ;
+  let sumOfCombinations = 0;
+  let flagCombinedType = true;
+
+  for (let i = 0; i < filteredUnique.length; ++i) {
+    counter = getPokemonByType(filteredUnique[i], filteredDataByType);
+    arrayOfCountersOfPokemon.push(counter.length);
+    if(filteredUnique[i].length < 2)
+    {
+      console.log('Existe un filtro de un solo tipo de pokemon: '+filteredUnique[i]+' por lo tanto siempre se restara al contador maximo los repetidos combinados')
+      flagCombinedType = false;
+    }
+    
+  }
+
+  for (let i = 0; i < arrayOfCountersOfPokemon.length; ++i) {
+    if (arrayOfCountersOfPokemon[i] !== Math.max(...arrayOfCountersOfPokemon)) {
+      
+      if((filteredUnique[i].join().includes('ice') ||
+           filteredUnique[i].join().includes('steel') ||
+           filteredUnique[i].join().includes('flying')) & flagCombinedType)
+      {
+        console.log('No se le restara nada a ningun elemento del arreglo de contadores de pokemon porque no existe un filtro de un solo tipo de pokemon, solo combinados');
+        sumOfCombinations = 0;
+        break;
+      }
+
+      sumOfCombinations = sumOfCombinations + arrayOfCountersOfPokemon[i];
+    }
+  }
+  console.log(Math.max(...arrayOfCountersOfPokemon))
+  const index = arrayOfCountersOfPokemon.indexOf(Math.max(...arrayOfCountersOfPokemon));
+  arrayOfCountersOfPokemon[index] = arrayOfCountersOfPokemon[index] - sumOfCombinations; 
+  console.log(filteredUnique);
+  console.log(arrayOfCountersOfPokemon)
+
+  const sum = arrayOfCountersOfPokemon.reduce((a,b) => a + b);
+  console.log(sum);
+  const percentages = arrayOfCountersOfPokemon.map(x => (x / sum) * 100);
+  console.log(percentages); 
+
+
+
+
+  const ctx = document.getElementById('myChart');
+//root.appendChild(ctx);
+  
+  if(myChart)
+  {
+    myChart.clear();
+    myChart.destroy();
+  }
+  
+ myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: filteredUnique,
+      datasets: [{
+        label: '# of Votes',
+        data: arrayOfCountersOfPokemon,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  
+
+});
+divPokemonType.appendChild(percentageButton);
+
+
+>>>>>>> 8df5749 (correcciones sintaxis)
