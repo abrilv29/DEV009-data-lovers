@@ -19729,8 +19729,8 @@ export default {
     },
     "pokemon-rarity": "normal",
     "type": [
-      "bug",
-      "steel"
+      "steel",
+      "bug"
     ],
     "encounter": {
       "base-flee-rate": "0.07",

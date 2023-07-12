@@ -218,27 +218,33 @@
 /* ----------responsive desing ---------*/
 @media (max-width:768px) {
     .content-search {
-        flex-direction: column;
+        flex-direction: row;
     }
 
 }
 /*-----------estilos filtro by type----------*/
-#divPokemonType {
-    display: flex;
-    background-color: aliceblue;
-    flex-direction: row;
-    width: 100%;
-    height: 40%;
-    margin: auto;
+#DivPokemonTypes {
+    width: auto;
+    /*height: auto;*/
+
+    
+  }
+  fieldset {
+    flex-wrap: wrap;
   }
 button {
     background-color: white;
     background-size: contain;
-    
-    width: 90px;
-    height: 30px;
+    font-size: 14px;
+    width: 100px;
+    /*height: 30px;*/
     margin: 6px;
-    border-radius: 10px;
+    padding: 6px;
+    border-radius: 15px;
+    border: 1px;
+    box-shadow: 1px 1px 5px 1px rgba(231, 225, 225, 0.75);
+    -webkit-box-shadow: 1px 1px 5px 1px rgba(202, 194, 194, 0.75);
+    -moz-box-shadow: 1px 1px 5px 1px rgba(207, 199, 199, 0.75);
   }
      
 li {
@@ -246,12 +252,15 @@ li {
     display: inline-block;
     width: 120px;
     margin: 5px;
-    border: 1px; 
+    border: 1px solid #000000; 
     border-radius: 5px;
 }
 label#labelType {
-    margin-left: 3px;
+    margin-left: 4px;
     margin-right: 2px;
+}
+input[type="checkbox"] {
+    margin-left: 2px;
 }
 
 li img[alt=' type pokemon'] {
@@ -260,3 +269,4 @@ li img[alt=' type pokemon'] {
     display: inline-block;
     
 }
+
