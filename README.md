@@ -136,7 +136,7 @@ Utilizamos la data del pokemon.js
   usabilidad en el `README.md`.
 * ![\[ \]](src/img/check.png) UI: Muestra lista y/o tabla con datos y/o indicadores.
 * ![\[ \]](src/img/check.png) UI: Permite ordenar data por uno o más campos (asc y desc).
-*![ \[ \] ](src/img/check.png)UI: Permite filtrar data en base a una condición.
+* ![ \[ \] ](src/img/check.png)UI: Permite filtrar data en base a una condición.
 * [ ] UI: Es _responsive_.
 
 Recuerda que también debes hacer: llenado de sprint check out de cierre de proyecto, una autoevaluación de objetivos de aprendizaje y autoevaluación de life skills desde tu dashboard de estudiante. [Acá el link](https://coda.io/d/_deHfHkTC743/Como-lograras-aprender-DEV_sumg1#_lu6qL) del flujo para que puedas ver el proceso.
