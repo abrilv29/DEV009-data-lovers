@@ -380,9 +380,10 @@ label#labelType {
     max-width: 200px;
 }
 .modal__num{
+    position: absolute;
     flex: 1;
     padding-right: 420px;
-    margin-top: 25px;
+    margin-top: -654px;
     font-weight: bold;
     font-size: 20px;
 }
@@ -424,8 +425,37 @@ label#labelType {
     border-radius: 7px;
 
 }
+.modal__evolu{
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+.modal__evolutions{
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.next-evolution{
+    width: 50%;
+    padding: 30px;
 
-
+}
+.prev-evolution{
+    width: 50%;
+    padding: 30px;
+}
+.modal__evolutions img{
+    width: 100px;
+}
+.modal__evolutions .titulo{
+    font-size: 18px;
+    font-weight: bold;
+ }
+ 
+.modal__evolutions p{
+   font-size: 16px;
+}
 
 /* ----------responsive desing ---------*/
 @media (max-width:768px) {

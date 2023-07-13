@@ -1,4 +1,5 @@
-import { filterOrder,
+import {
+  filterOrder,
   filterCards,
   getPokemonByType,
   getPokemonByResistant,
@@ -63,12 +64,12 @@ const pokemonList = (list) => {
          <div class="type-pokemon">${TypePokemon(pokemon.type)}</div>
          </div>
          </div>`;
-    content.addEventListener('click', ()=>{
+    content.addEventListener('click', () => {
       const viewModal = showModal(pokemon);
       viewModal.classList.add('modal--show');
       content.appendChild(contentModal);
     });
-    
+
     //countPokemon += 1;
     root.appendChild(content);
 
@@ -102,7 +103,7 @@ const showModal = (dataPoke) => {
                   <div class="modal__evolutions"></div>
                 </div>`;
   contentModal.appendChild(sectionModal);
-              
+
   sectionModal.style.display = 'block';
 
   const modalClose = document.querySelector('.modal__close');
@@ -114,15 +115,72 @@ const showModal = (dataPoke) => {
   });
   // Evoluciones
   // Mostrar información de evolución en la ventana modal
-  /*const evolutionsContainer = sectionModal.querySelector('.modal__evolutions');
-  const evolution = filterEvolutionData(allName,evolutionsContainer);
-  console.log(evolution);*/
- 
+  const evolutionsContainer = sectionModal.querySelector('.modal__evolutions');
+  const evolution = dataPoke.evolution;
+
+  if (evolution['next-evolution']) {
+    evolution['next-evolution'].forEach(evo => {
+      evolutionsContainer.innerHTML += `
+      <div class="next-evolution">
+      <img src="https://www.serebii.net/pokemongo/pokemon/${evo.num}.png">
+      <p class="titulo">Next Evolution:</p>
+      <p>Num: ${evo.name}</p>
+      <p>Name: ${evo.num}</p>
+      <p>Candy Cost: ${evo["candy-cost"]}</p>
+      </div>`;
+
+      if (evo['next-evolution']) {
+        evo['next-evolution'].forEach(ev => {
+          evolutionsContainer.innerHTML += `
+          <div class="next-evolution">
+          <img src="https://www.serebii.net/pokemongo/pokemon/${ev.num}.png">
+          <p class="titulo">Next Evolution:</p>
+          <p>Num: ${ev.name}</p>
+          <p>Name: ${ev.num}</p>
+          <p>Candy Cost: ${ev["candy-cost"]}</p>
+          </div>`;
+
+        });//forEach
+      }
+
+    });//forEach
+
+  }
+  if (evolution['prev-evolution']) {
+    evolution['prev-evolution'].forEach(e => {
+      evolutionsContainer.innerHTML += `
+      <div class="prev-evolution">
+      <img src="https://www.serebii.net/pokemongo/pokemon/${e.num}.png">
+      <p class="titulo">Prev Evolution:</p>
+      <p>Num: ${e.name}</p>
+      <p>Name: ${e.num}</p>
+      <p>Candy Cost: ${e["candy-cost"]}</p>
+      </div>`;
+
+      if (e['prev-evolution']) {
+        e['prev-evolution'].forEach(evol => {
+          evolutionsContainer.innerHTML += `
+          <div class="prev-evolution">
+          <img src="https://www.serebii.net/pokemongo/pokemon/${evol.num}.png">
+          <p class="titulo">Prev Evolution:</p>
+          <p>Num: ${evol.name}</p>
+          <p>Name: ${evol.num}</p>
+          <p>Candy Cost: ${evol["candy-cost"]}</p>
+          </div>`;
+
+        });//forEach
+      }
+
+    });//forEach
+
+
+
+  }
+
+
+
   return sectionModal;
 };
-
-
-
 
 /* ------------------------------ ESTRUCTURA DEL SEARCH NAME  -------------------------------------- */
 //Buscar los pokemones por nombre usando un input
@@ -232,46 +290,6 @@ select.addEventListener('change', () => {
   }
 
 });
-
-
-/* ------------------------------ ESTRUCTURA EVOLUTION CARAMEL  -------------------------------------- */
-
-//const evolutions = getEvolution(allName);
-//console.log(evolutions);
-
-
-/*const divEvoluciones = document.createElement('div');
-const cont = document.createElement('p');
-cont.innerHTML="evolution";
-divEvoluciones.appendChild(cont);
-contentSearch.appendChild(divEvoluciones);
-// Paso 3 y 4: Crear y añadir elementos <option> al <select>
-
-
-// Manejar el evento de cambio en el select
-divEvoluciones.addEventListener('click', function () {
-  const evolutionPoke = filtrarEvoluciones(allName, divEvoluciones);
-  console.log(evolutionPoke);
-
-  // Crear el contenido HTML
-  let html = "";
-  evolutionPoke.forEach((evolution) => {
-    root.innerHTML='';
-    if (evolution.name && evolution.num && evolution.candyCost) {// me ayuda a quitar el valor undefined
-      html += `
-      <div>
-        <img src="${allName.img}" alt="${evolution.name}">
-        <p>Name: ${evolution.name}, Num: ${evolution.num}, Candy Cost: ${evolution.candyCost}</p>
-      </div>
-    `;
-    }
-  });
-
-  // Establecer el contenido del div
-  divEvoluciones.innerHTML = html;
-
-  
-});*/
 /*-----------------ESTRUCTURA FILTRO POKEMON BY TYPE--------------------------*/
 
 const arrayOfTypes = ["grass", "poison", "normal", "water", "electric", "fighting", "fairy", "ice", "flying", "psychic", "fire", "steel", "bug", "rock", "dragon", "dark", "ground", "ghost"];
