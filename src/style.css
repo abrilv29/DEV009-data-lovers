@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2? family= Poppins & display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 * {
     margin: 0;
@@ -126,9 +126,10 @@
 .content-search {
     width: 100%;
     background-color: var(--color-search);
-    height: 180px;
+    height: 250px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
 }
@@ -217,7 +218,55 @@
 /* ----------responsive desing ---------*/
 @media (max-width:768px) {
     .content-search {
-        flex-direction: column;
+        flex-direction: row;
     }
 
 }
+/*-----------estilos filtro by type----------*/
+#DivPokemonTypes {
+    width: auto;
+    /*height: auto;*/
+
+    
+  }
+  fieldset {
+    flex-wrap: wrap;
+  }
+button {
+    background-color: white;
+    background-size: contain;
+    font-size: 14px;
+    width: 100px;
+    /*height: 30px;*/
+    margin: 6px;
+    padding: 6px;
+    border-radius: 15px;
+    border: 1px;
+    box-shadow: 1px 1px 5px 1px rgba(231, 225, 225, 0.75);
+    -webkit-box-shadow: 1px 1px 5px 1px rgba(202, 194, 194, 0.75);
+    -moz-box-shadow: 1px 1px 5px 1px rgba(207, 199, 199, 0.75);
+  }
+     
+li {
+    background-color: var(--color-search);
+    display: inline-block;
+    width: 120px;
+    margin: 5px;
+    border: 1px solid #000000; 
+    border-radius: 5px;
+}
+label#labelType {
+    margin-left: 4px;
+    margin-right: 2px;
+}
+input[type="checkbox"] {
+    margin-left: 2px;
+}
+
+li img[alt=' type pokemon'] {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    
+}
+
