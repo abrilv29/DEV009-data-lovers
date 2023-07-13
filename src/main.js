@@ -124,8 +124,8 @@ const showModal = (dataPoke) => {
       <div class="next-evolution">
       <img src="https://www.serebii.net/pokemongo/pokemon/${evo.num}.png">
       <p class="titulo">Next Evolution:</p>
-      <p>Num: ${evo.name}</p>
-      <p>Name: ${evo.num}</p>
+      <p>Num: ${evo.num}</p>
+      <p>Name: ${evo.name}</p>
       <p>Candy Cost: ${evo["candy-cost"]}</p>
       </div>`;
 
@@ -135,8 +135,8 @@ const showModal = (dataPoke) => {
           <div class="next-evolution">
           <img src="https://www.serebii.net/pokemongo/pokemon/${ev.num}.png">
           <p class="titulo">Next Evolution:</p>
-          <p>Num: ${ev.name}</p>
-          <p>Name: ${ev.num}</p>
+          <p>Num: ${evo.num}</p>
+          <p>Name: ${evo.name}</p>
           <p>Candy Cost: ${ev["candy-cost"]}</p>
           </div>`;
 
@@ -152,8 +152,8 @@ const showModal = (dataPoke) => {
       <div class="prev-evolution">
       <img src="https://www.serebii.net/pokemongo/pokemon/${e.num}.png">
       <p class="titulo">Prev Evolution:</p>
-      <p>Num: ${e.name}</p>
-      <p>Name: ${e.num}</p>
+      <p>Num: ${e.num}</p>
+      <p>Name: ${e.name}</p>
       <p>Candy Cost: ${e["candy-cost"]}</p>
       </div>`;
 
@@ -163,8 +163,8 @@ const showModal = (dataPoke) => {
           <div class="prev-evolution">
           <img src="https://www.serebii.net/pokemongo/pokemon/${evol.num}.png">
           <p class="titulo">Prev Evolution:</p>
-          <p>Num: ${evol.name}</p>
-          <p>Name: ${evol.num}</p>
+          <p>Num: ${evol.num}</p>
+          <p>Name: ${evol.name}</p>
           <p>Candy Cost: ${evol["candy-cost"]}</p>
           </div>`;
 
