@@ -110,3 +110,12 @@ export const getPokemonByWeaknesses = (arrayOfSelectedPokemonType, pokemonList) 
 
 
 
+    if (!arrayOfFlagsPokemonType.includes(pokemonList[indexCondition].type.sort().join())) {
+      arrayOfFlagsPokemonType.push(pokemonList[indexCondition].type.sort().join())
+      arrayOfUniquePokemonType.push(pokemonList[indexCondition].type.sort());
+    }
+    
+  }
+  //console.log(arrayOfUniquePokemonType);
+  return arrayOfUniquePokemonType
+};
