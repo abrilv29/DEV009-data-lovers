@@ -323,11 +323,6 @@ resistantButton.addEventListener("click", function () {
 });
 divPokemonType.appendChild(resistantButton);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 8df57494780d5c418a0bbefb495865604fc07df3
 
 /*-------------------------------------------boton porcentajes-------------- */
 const percentageButton = document.createElement("button");
@@ -362,7 +357,7 @@ percentageButton.addEventListener("click", function () {
     arrayOfCountersOfPokemon.push(counter.length);
     if(filteredUnique[i].length < 2)
     {
-      console.log('Existe un filtro de un solo tipo de pokemon: '+filteredUnique[i]+' por lo tanto siempre se restara al contador maximo los repetidos combinados')
+      //console.log('Existe un filtro de un solo tipo de pokemon: '+filteredUnique[i]+' por lo tanto siempre se restara al contador maximo los repetidos combinados')
       flagCombinedType = false;
     }
     
@@ -375,7 +370,7 @@ percentageButton.addEventListener("click", function () {
            filteredUnique[i].join().includes('steel') ||
            filteredUnique[i].join().includes('flying')) & flagCombinedType)
       {
-        console.log('No se le restara nada a ningun elemento del arreglo de contadores de pokemon porque no existe un filtro de un solo tipo de pokemon, solo combinados');
+        //console.log('No se le restara nada a ningun elemento del arreglo de contadores de pokemon porque no existe un filtro de un solo tipo de pokemon, solo combinados');
         sumOfCombinations = 0;
         break;
       }
@@ -383,14 +378,14 @@ percentageButton.addEventListener("click", function () {
       sumOfCombinations = sumOfCombinations + arrayOfCountersOfPokemon[i];
     }
   }
-  console.log(Math.max(...arrayOfCountersOfPokemon))
+  //console.log(Math.max(...arrayOfCountersOfPokemon))
   const index = arrayOfCountersOfPokemon.indexOf(Math.max(...arrayOfCountersOfPokemon));
   arrayOfCountersOfPokemon[index] = arrayOfCountersOfPokemon[index] - sumOfCombinations; 
-  console.log(filteredUnique);
-  console.log(arrayOfCountersOfPokemon)
+  //console.log(filteredUnique);
+  //console.log(arrayOfCountersOfPokemon)
 
   const sum = arrayOfCountersOfPokemon.reduce((a,b) => a + b);
-  console.log(sum);
+  //console.log(sum);
   const percentages = arrayOfCountersOfPokemon.map(x => (x / sum) * 100);
   console.log(percentages); 
 
@@ -398,15 +393,15 @@ percentageButton.addEventListener("click", function () {
 
 
   const ctx = document.getElementById('myChart');
-//root.appendChild(ctx);
+  //root.appendChild(ctx);
   
   if(myChart)
   {
     myChart.clear();
     myChart.destroy();
   }
-  
- myChart = new Chart(ctx, {
+  const Chart = "";
+  myChart = new Chart(ctx, {
     type: 'pie',
     data: {
       labels: filteredUnique,
@@ -429,6 +424,4 @@ percentageButton.addEventListener("click", function () {
 
 });
 divPokemonType.appendChild(percentageButton);
-
-
 

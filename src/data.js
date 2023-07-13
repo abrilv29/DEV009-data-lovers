@@ -116,4 +116,3 @@ export const getPokemonUniqueType = (pokemonList) => {
   //console.log(arrayOfUniquePokemonType);
   return arrayOfUniquePokemonType
 };
-
