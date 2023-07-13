@@ -30,5 +30,8 @@
     "createdAt": "2023-06-07T21:05:53.200Z",
     "version": "6.3.0",
     "commit": "19ca89e6e299d9b55d5e47f92352b74ee10a3c0a"
+  },
+  "dependencies": {
+    "chart.js": "^4.3.0"
   }
 }
