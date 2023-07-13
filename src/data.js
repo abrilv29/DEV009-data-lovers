@@ -14,6 +14,39 @@ export const filterOrder = (arrayPokemon, orderSelect) => {
   case "Z-A":
     orderName = arrayPokemon.sort((a, b) => (a.name > b.name ? -1 : 1));
     break;
+
+  //case "num":
+   // orderName = arrayPokemon.sort((a, b) => a.num > b.num ? 1 : -1);
+    //break;
+  //default:
+
+  }
+  //console.log(orderName);
+  return orderName;
+
+};
+
+/*export const filterCandy = (orderCandy) => {
+
+  console.log(orderCandy);
+
+  return orderCandy = evolution["next-evolution"].filter(ev => ev["candy-cost"] === "25");
+
+
+};*/
+
+export const getPokemonByType = (arrayOfSelectedPokemonType, pokemonList) => {
+  let pokemonFilteredList = null;
+  for (let indexCondition = 0; indexCondition < arrayOfSelectedPokemonType.length; indexCondition++) {
+   
+    pokemonFilteredList =
+      pokemonList.filter(
+        function (objeto) {
+         
+          const objetoConsultado =
+            objeto.type.some(function (item) {
+              if (item.indexOf(arrayOfSelectedPokemonType[indexCondition]) >= 0) {
+=======
   case "num":
     orderName = arrayPokemon.sort((a, b) => a.num > b.num ? 1 : -1);
     break;
@@ -45,6 +78,7 @@ export const getPokemonByType = (arrayOfSelectedPokemonType, pokemonList) => {
               //evalua si el arrego de los tipos (item), contiene el elemento de la iteración arrayOfSelectedPokemonType[indexCondition]
               if (item.indexOf(arrayOfSelectedPokemonType[indexCondition]) >= 0) {
                 //console.log("El tipo de pokemon a filtrar en la iteración número: "+indexCondition+" es: "+arrayOfSelectedPokemonType[indexCondition]);
+
                 return true;
               }
 
@@ -52,14 +86,18 @@ export const getPokemonByType = (arrayOfSelectedPokemonType, pokemonList) => {
             });
 
 
+
           //console.log("el objeto consultado es: "+objetoConsultado);
+
           return objetoConsultado;
 
         });
 
+
     // Se reemplaza el arreglo pokemonList (arreglo actual, puede ser el original o uno ya filtrada, depende de la iteración del for) por el arreglo
     // pokemonFilteredList (un arreglo más pequeño al cual ya se le aplicó el filtro) y ahora es el arreglo actual, por lo tanto la siguiente iteración
     // del for iterará sobre un arreglo más pequeño
+
     pokemonList = pokemonFilteredList;
 
   }
@@ -103,6 +141,24 @@ export const getPokemonByWeaknesses = (arrayOfSelectedPokemonType, pokemonList) 
   }
   return pokemonFilteredList;
 
+};
+
+
+//combinaciones existentes en los 251 pokemones
+export const getPokemonUniqueType = (pokemonList) => {
+  const arrayOfUniquePokemonType = [];
+  const arrayOfFlagsPokemonType = [];
+  for (let indexCondition = 0; indexCondition < pokemonList.length; indexCondition++) {
+    //console.log(pokemonList[indexCondition].type);
+
+    if (!arrayOfFlagsPokemonType.includes(pokemonList[indexCondition].type.sort().join())) {
+      arrayOfFlagsPokemonType.push(pokemonList[indexCondition].type.sort().join())
+      arrayOfUniquePokemonType.push(pokemonList[indexCondition].type.sort());
+    }
+    
+  }
+  //console.log(arrayOfUniquePokemonType);
+  return arrayOfUniquePokemonType
 };
 
 

@@ -244,8 +244,26 @@
     width: 50px;
 }
 
+/* ----------responsive desing ---------*/
+@media (max-width:768px) {
+    .content-search {
+        flex-direction: row;
+    }
+
+
 
 /*-----------estilos filtro by type----------*/
+
+#DivPokemonTypes {
+    width: auto;
+    /*height: auto;*/
+
+    
+  }
+  fieldset {
+    flex-wrap: wrap;
+  }
+
 #divPokemonType {
     background-color: blue;;
     width: 100%;
@@ -255,13 +273,25 @@
     justify-content: center;
 
 }
+
 button {
     background-color:red;
     background-size: contain;
+
+    font-size: 14px;
+    width: 100px;
+    /*height: 30px;*/
+
     width: 120px;
     height: 45px;
+
     margin: 6px;
-    border-radius: 10px;
+    padding: 6px;
+    border-radius: 15px;
+    border: 1px;
+    box-shadow: 1px 1px 5px 1px rgba(231, 225, 225, 0.75);
+    -webkit-box-shadow: 1px 1px 5px 1px rgba(202, 194, 194, 0.75);
+    -moz-box-shadow: 1px 1px 5px 1px rgba(207, 199, 199, 0.75);
   }
 fieldset{
     display: flex;
@@ -273,6 +303,31 @@ fieldset{
     padding: 10px;
 }
 li {
+
+    background-color: var(--color-search);
+    display: inline-block;
+    width: 120px;
+    margin: 5px;
+    border: 1px solid #000000; 
+    border-radius: 5px;
+}
+label#labelType {
+    margin-left: 4px;
+    margin-right: 2px;
+}
+input[type="checkbox"] {
+    margin-left: 2px;
+}
+
+li img[alt=' type pokemon'] {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    
+}
+
+
+
     background-color: var(--color-input);
     width:150px;
     height: 45px;
@@ -511,3 +566,4 @@ label#labelType {
     }
    
 }
+
