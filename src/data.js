@@ -107,7 +107,12 @@ export const getPokemonByWeaknesses = (arrayOfSelectedPokemonType, pokemonList) 
 
 
 
-
+//combinaciones existentes en los 251 pokemones
+export const getPokemonUniqueType = (pokemonList) => {
+  const arrayOfUniquePokemonType = [];
+  const arrayOfFlagsPokemonType = [];
+  for (let indexCondition = 0; indexCondition < pokemonList.length; indexCondition++) {
+    //console.log(pokemonList[indexCondition].type);
 
 
     if (!arrayOfFlagsPokemonType.includes(pokemonList[indexCondition].type.sort().join())) {
