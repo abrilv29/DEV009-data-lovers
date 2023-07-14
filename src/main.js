@@ -545,7 +545,7 @@ percentageButton.addEventListener("click", function () {
     myChart.clear();
     myChart.destroy();
   }
-  //const Chart = "";
+  const Chart = "";
   myChart = new Chart(ctx, {
     type: 'pie',
     data: {

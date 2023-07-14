@@ -283,7 +283,7 @@
 }
 
 .modal__container{
-    overflow: scroll;
+    overflow-x: auto;
     background-size: cover;
     margin: auto;
     width: 400px;
@@ -298,6 +298,18 @@
     align-items: center;
     transform: var(--transform);
     transition:var(--transition);
+}
+.modal__container::-webkit-scrollbar{
+    width: 8px;
+    background-color: #d9dddf;
+    border-radius: 20px;
+}
+.modal__container::-webkit-scrollbar:window-inactive {
+    display: none;
+}
+.modal__container::-webkit-scrollbar-thumb  {
+    background-color: #09C;
+    border-radius: 6px;
 }
 .modal__close{
     position: absolute;
