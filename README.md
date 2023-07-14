@@ -100,10 +100,20 @@ diseño visual. Nosotros te recomendamos [Figma](https://www.figma.com/)
 * Para el Hacker edition utilizamos la data que se habia filtrado en los tipos de pokemon, para graficar los valos por tipo ya sean convinados o uno solo. 
 * La herramienta a utilizar fue la etiqueta canvas de HTML 5
 ```html
-                        <canvas id="myChart"></canvas>
+                                          <canvas id="myChart"></canvas>
 ```
 
 * [Chart.js](https://www.chartjs.org/)
+* Grafica por tipo de pokemon, de acuerdo al porcentaje del total de los pokemones existentes.
+```js
+          const arrayOfTypes = ["grass", "poison", 
+          "normal", "water", "electric", "
+          fighting", "fairy", "ice", "flying", 
+          "psychic", "fire", "steel", "bug", 
+          "rock", "dragon", "dark", "ground", "ghost"];
+```
+
+![Alt text](src/img/grafica.png)
 Resultados de tipo de pokemon en la grafica constrida con la data filtrada.
 
 ## Consideraciones técnicas

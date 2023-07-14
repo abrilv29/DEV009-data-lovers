@@ -15,10 +15,10 @@ export const filterOrder = (arrayPokemon, orderSelect) => {
     orderName = arrayPokemon.sort((a, b) => (a.name > b.name ? -1 : 1));
     break;
 
-  //case "num":
-   // orderName = arrayPokemon.sort((a, b) => a.num > b.num ? 1 : -1);
-    //break;
-  //default:
+  case "num":
+    orderName = arrayPokemon.sort((a, b) => a.num > b.num ? 1 : -1);
+    break;
+  default:
 
   }
   //console.log(orderName);
@@ -26,38 +26,6 @@ export const filterOrder = (arrayPokemon, orderSelect) => {
 
 };
 
-/*export const filterCandy = (orderCandy) => {
-
-  console.log(orderCandy);
-
-  return orderCandy = evolution["next-evolution"].filter(ev => ev["candy-cost"] === "25");
-
-
-};*/
-
-export const getPokemonByType = (arrayOfSelectedPokemonType, pokemonList) => {
-  let pokemonFilteredList = null;
-  for (let indexCondition = 0; indexCondition < arrayOfSelectedPokemonType.length; indexCondition++) {
-   
-    pokemonFilteredList =
-      pokemonList.filter(
-        function (objeto) {
-         
-          const objetoConsultado =
-            objeto.type.some(function (item) {
-              if (item.indexOf(arrayOfSelectedPokemonType[indexCondition]) >= 0) {
-=======
-  case "num":
-    orderName = arrayPokemon.sort((a, b) => a.num > b.num ? 1 : -1);
-    break;
-  default:
-
-
-  }
-  // console.log(orderName);
-  return orderName;
-
-};
 //Inicializamos la funcion con dos parametros: param1 = arrayOfSelectedPokemonType, y param2 = pokemonList
 export const getPokemonByType = (arrayOfSelectedPokemonType, pokemonList) => {
   let pokemonFilteredList = null;

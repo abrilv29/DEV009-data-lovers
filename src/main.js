@@ -1,20 +1,13 @@
-
-//import { filterCandy } from './data.js';
-import { filterOrder, getPokemonUniqueType } from './data.js';
-import { filterCards } from './data.js';
-import { getPokemonByType } from './data.js';
-import { getPokemonByResistant } from './data.js';
-import { getPokemonByWeaknesses } from './data.js';
-
 import {
   filterOrder,
   filterCards,
   getPokemonByType,
   getPokemonByResistant,
-  getPokemonByWeaknesses
+  getPokemonByWeaknesses,
+  getPokemonUniqueType
 } from './data.js';
-
 import data from './data/pokemon/pokemon.js';
+
 /* ------------------------------ ESTRUCTURA DEL HTML  -------------------------------------- */
 //CREACION DEL HEADER
 //Variable donde se va a ir modificando la estructura de nuestra pagina
@@ -35,9 +28,6 @@ bodyPage.insertBefore(headerPokemon, headerFirst);
 /* ------------------------------ ESTRUCTURA DEL CARDS POKEMON  -------------------------------------- */
 //GUARDAMOS LA DATA EN UNA VARIABLE
 const allName = data.pokemon; // data pokemon
-
-//console.log(allName.length);
-
 //console.log(allName);
 
 //const filtro = filterCards(allName); // data.js funciones
@@ -45,11 +35,9 @@ const allName = data.pokemon; // data pokemon
 //CONTENEDOR DONDE SE MUESTRAN LAS CARDS POKEMON
 const root = document.getElementById('root');
 
-
 //contenedor de la ventana Modal
 const contentModal = document.createElement('section');
 contentModal.classList.add('content-modal');
-
 
 
 //Iconos por tipo de pokemon
@@ -70,7 +58,6 @@ const pokemonList = (list) => {
     const content = document.createElement("div");
     content.classList.add("content-principal");
     content.innerHTML = `
-
          <div class="container-cards ${pokemon.type[0]} content-card">
          <p class="num-pokemon">${pokemon.num}</p>
          <img src="${pokemon.img}">
@@ -78,9 +65,6 @@ const pokemonList = (list) => {
          <p class="name-pokemon">${pokemon.name}</p>
          <div class="type-pokemon">${TypePokemon(pokemon.type)}</div>
          </div>
-
-         </div>`
-
          </div>`;
     content.addEventListener('click', () => {
       const viewModal = showModal(pokemon);
@@ -88,16 +72,10 @@ const pokemonList = (list) => {
       content.appendChild(contentModal);
     });
 
-
     //countPokemon += 1;
     root.appendChild(content);
 
   });
-
-}
-pokemonList(allName);
-
-
 };
 pokemonList(allName);
 
@@ -108,11 +86,11 @@ const showModal = (dataPoke) => {
   sectionModal.classList.add('modal');
   console.log("hola");
   sectionModal.innerHTML = `
-                  <div class="modal__container ${dataPoke.type[0]}">
                   <img src="img/cancelar.png" class="modal__close">
-                  <p class="modal__num">#${dataPoke.num}</p>
-                  <img src="${dataPoke.img}" class="modal__img">
+                  <div class="modal__container ${dataPoke.type[0]}">
                   <div class="modal__header">
+                  <img src="${dataPoke.img}" class="modal__img">
+                  <p class="modal__num">#${dataPoke.num}</p>
                   <p class="modal__title">${dataPoke.name}</p>
                   <p class="modal__paragraph">${dataPoke.about} </p>
                   </div>
@@ -129,6 +107,7 @@ const showModal = (dataPoke) => {
   contentModal.appendChild(sectionModal);
 
   sectionModal.style.display = 'block';
+  
 
   const modalClose = document.querySelector('.modal__close');
   window.addEventListener('click', (evento) => {
@@ -196,16 +175,10 @@ const showModal = (dataPoke) => {
       }
 
     });//forEach
-
-
-
   }
-
-
 
   return sectionModal;
 };
-
 
 /* ------------------------------ ESTRUCTURA DEL SEARCH NAME  -------------------------------------- */
 //Buscar los pokemones por nombre usando un input
@@ -234,9 +207,7 @@ contentSearch.appendChild(inputSearch);
 
 searchInput.addEventListener('input', () => {
   const resulPokemon = filterCards(allName, searchInput.value);
-
   //console.log(resulPokemon);
-
   if (resulPokemon.length === 0) {
     mensajeError();
   } else {
@@ -251,19 +222,11 @@ searchInput.addEventListener('input', () => {
 const mensajeError = () => {
   root.innerHTML = '';
   const divError = document.createElement("div");
-
-  divError.classList.add("class", "content-error");
-  const parrafo = document.createElement("p");
-  parrafo.innerHTML = 'No existe ese pokemon';
-  const imgError = document.createElement("img");
-  imgError.src = './img/psyduck.gif';
-
   divError.classList.add("content-error");
   const parrafo = document.createElement("p");
   parrafo.innerHTML = 'No found pokemon !!!';
   const imgError = document.createElement("img");
   imgError.src = 'img/psyduck.gif';
-
   divError.appendChild(parrafo);
   divError.appendChild(imgError);
   root.appendChild(divError);
@@ -306,24 +269,6 @@ select.addEventListener('change', () => {
   root.innerHTML= '';
   pokemonList(filterOrder(allName,orderSelect));*/
 
-
-  switch (select.value) {
-  case 'A-Z':
-    root.innerHTML = '';
-    pokemonList(filterOrder(allName, 'A-Z'));
-    break;
-  case 'Z-A':
-    root.innerHTML = '';
-    pokemonList(filterOrder(allName, 'Z-A'));
-    break;
-  case 'num':
-    root.innerHTML = '';
-    pokemonList(filterOrder(allName, 'num'));
-    break;
-  default:
-  }
-
-
   switch (select.value) {
   case 'A-Z':
     root.innerHTML = '';
@@ -339,56 +284,13 @@ select.addEventListener('change', () => {
     break;
   default:
 
-
-/* ------------------------------ ESTRUCTURA EVOLUTION CARAMEL  -------------------------------------- */
-
-/*const selectCandy = document.createElement("select");
-selectCandy.id = "candySelect";
-const mensajeCandy = document.createElement("option");
-mensajeCandy.value = "";
-mensajeCandy.text = "candy evolution";
-selectCandy.add(mensajeCandy);
-
-const optionC1 = document.createElement("option");
-optionC1.value = "25";
-optionC1.text = "25";
-selectCandy.add(optionC1);
-
-const optionC2 = document.createElement("option");
-optionC2.value = "25";
-optionC2.text = "50";
-selectCandy.add(optionC2);
-
-const optionC3 = document.createElement("option");
-optionC3.value = "100";
-optionC3.text = "100";
-selectCandy.add(optionC3);
-
-const optionC4 = document.createElement("option");
-optionC4.value = "100";
-optionC4.text = "400";
-selectCandy.add(optionC4);
-contentSearch.appendChild(selectCandy);
-
-selectCandy.addEventListener('change', () => {
-
-  switch (selectCandy.value) {
-  case '25':
-    root.innerHTML = '';
-    pokemonList(filterCandy(allName, '25'));
-    break;
-  default:
-  }
-});*/
-/*-------------------------------------------ESTRUCTURA FILTRO POKEMON BY TYPE-------------------------------------------------------------------*/
 
   }
 
 });
 /*-----------------ESTRUCTURA FILTRO POKEMON BY TYPE--------------------------*/
 
-
-const arrayOfTypes = ["bug", "dark", "dragon", "electric", "fairy", "fighting", "fire", "flying", "ghost", "grass", "ground", "ice", "normal", "poison", "psychic", "rock", "steel", "water"];
+const arrayOfTypes = ["grass", "poison", "normal", "water", "electric", "fighting", "fairy", "ice", "flying", "psychic", "fire", "steel", "bug", "rock", "dragon", "dark", "ground", "ghost"];
 const divPokemonType = document.createElement("div");
 divPokemonType.id = "divPokemonType";
 bodyPage.insertBefore(divPokemonType, contentSearch);
@@ -402,44 +304,33 @@ divPokemonType.appendChild(pokemonFilterType);
 for (let i = 0; i < arrayOfTypes.length; i++) {
   const divPokemonType = document.createElement("li");
   divPokemonType.id = arrayOfTypes[i];
-
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.name = "pokemonType";
   checkbox.value = arrayOfTypes[i];
   checkbox.id = arrayOfTypes[i];
-
   const labelPokemonType = document.createElement("label");
   labelPokemonType.id = "labelType";
   labelPokemonType.htmlFor = arrayOfTypes[i];
   labelPokemonType.img = TypePokemon(arrayOfTypes);
   labelPokemonType.appendChild(document.createTextNode(arrayOfTypes[i]));
-  
   divPokemonType.appendChild(checkbox);
   divPokemonType.appendChild(labelPokemonType);
   const iconEachType = TypePokemon([arrayOfTypes[i]]);
-  divPokemonType.innerHTML += iconEachType; 
+  divPokemonType.innerHTML += iconEachType;
   pokemonFilterType.appendChild(divPokemonType);
 
 }
 
-/*-------------------------------------------------------BOTON DE BUSQUEDA-----------------------------------------------------------------------*/
+//boton de busqueda
 const searchButton = document.createElement("button");
 searchButton.id = "boton-filtro";
 searchButton.innerHTML = "Search";
-
 //se agrega evento al boton
-
 searchButton.addEventListener("click", function () {
 
   const root = document.getElementById('root');
   let checkedValue = null;
-
-  const inputElements = document.getElementsByName('pokemonType');
-  const arrayOfSelectedPokemonType = new Array();
-  root.innerHTML = '';
-  for (let i = 0; i < inputElements.length; ++i) {
-
   //trae los 18 tipos del checkbox del arreglo de tipos de pokemon
   const inputElements = document.getElementsByName('pokemonType');
   //se inicializa un arreglo que tendra los tipos de pokemon seleccionados
@@ -449,45 +340,31 @@ searchButton.addEventListener("click", function () {
   //este for llena el arreglo arrayOfFilteredPokemonType con los tipos de pokemon seleccionados en la busqueda
   for (let i = 0; i < inputElements.length; ++i) {
     //este if es para revisar que elementos de inputElements estan seleccionados con una palomita
-   if (inputElements[i].checked) {
+    if (inputElements[i].checked) {
       checkedValue = inputElements[i].value;
       arrayOfSelectedPokemonType.push(checkedValue);
     }
   }
-
-
-  const filteredDataByType = getPokemonByType(arrayOfSelectedPokemonType, allName);
-
   //alert(inputElements.length);
   //alert(arrayOfFilteredPokemonType.length);
   //busca los pokemones que cumplan con los tipos seleccionados (o filtrados) en los checkbox
   //Inicializamos la funcion que importamos, usando como param1 = arrayOfSelectedPokemonType y como param2 = allPokemon
   const filteredDataByType = getPokemonByType(arrayOfSelectedPokemonType, allName);
   //reutilizamos la funcion pokemonList ahora con el resultado de la funcion anterior
-
   pokemonList(filteredDataByType);
 
 });
 divPokemonType.appendChild(searchButton);
 
-/*----------------------------------------------------------BOTON WEAKNESSES--------------------------------------------------------------------*/
+//boton debilidad contra
 const weaknessesButton = document.createElement("button");
 weaknessesButton.id = "filtro-debilidad";
 weaknessesButton.innerHTML = "Weaknesses";
-
-
 //se agrega evento al boton
-
 weaknessesButton.addEventListener("click", function () {
 
   const root = document.getElementById('root');
   let checkedValue = null;
-
-  const inputElements = document.getElementsByName('pokemonType');
-  const arrayOfSelectedPokemonType = new Array();
-  root.innerHTML = '';
-  for (let i = 0; i < inputElements.length; ++i) {
-
   //trae los 18 tipos del checkbox del arreglo de tipos de pokemon
   const inputElements = document.getElementsByName('pokemonType');
   //se inicializa un arreglo que tendra los tipos de pokemon seleccionados
@@ -497,47 +374,33 @@ weaknessesButton.addEventListener("click", function () {
   //este for llena el arreglo arrayOfFilteredPokemonType con los tipos de pokemon seleccionados en la busqueda
   for (let i = 0; i < inputElements.length; ++i) {
     //este if es para revisar que elementos de inputElements estan seleccionados con una palomita
-
     if (inputElements[i].checked) {
       checkedValue = inputElements[i].value;
       arrayOfSelectedPokemonType.push(checkedValue);
     }
   }
-
-  
-  const filteredDataByWeaknesses = getPokemonByWeaknesses(arrayOfSelectedPokemonType, allName);
-
   //alert(inputElements.length);
   //alert(arrayOfFilteredPokemonType.length);
   //busca los pokemones que cumplan con los tipos seleccionados (o filtrados) en los checkbox
   //Inicializamos la funcion que importamos, usando como param1 = arrayOfSelectedPokemonType y como param2 = allPokemon
   const filteredDataByWeaknesses = getPokemonByWeaknesses(arrayOfSelectedPokemonType, allName);
   //reutilizamos la funcion pokemonList ahora con el resultado de la funcion anterior
-
   pokemonList(filteredDataByWeaknesses);
 
 });
+//se ubica donde queremos que este el boton
 divPokemonType.appendChild(weaknessesButton);
 
 
-/*-------------------------------------------------------------------BOTON RESISTANT------------------------------------------------------------*/
+//boton resistencia contra
 const resistantButton = document.createElement("button");
 resistantButton.id = "filtro-resistencia";
 resistantButton.innerHTML = "Resistant";
-
-
 //se agrega evento al boton
-
 resistantButton.addEventListener("click", function () {
 
   const root = document.getElementById('root');
   let checkedValue = null;
-
-  const inputElements = document.getElementsByName('pokemonType');
-  const arrayOfSelectedPokemonType = new Array();
-  root.innerHTML = '';
-  for (let i = 0; i < inputElements.length; ++i) {
-
   //trae los 18 tipos del checkbox del arreglo de tipos de pokemon
   const inputElements = document.getElementsByName('pokemonType');
   //se inicializa un arreglo que tendra los tipos de pokemon seleccionados
@@ -547,93 +410,22 @@ resistantButton.addEventListener("click", function () {
   //este for llena el arreglo arrayOfFilteredPokemonType con los tipos de pokemon seleccionados en la busqueda
   for (let i = 0; i < inputElements.length; ++i) {
     //este if es para revisar que elementos de inputElements estan seleccionados con una palomita
-
     if (inputElements[i].checked) {
       checkedValue = inputElements[i].value;
       arrayOfSelectedPokemonType.push(checkedValue);
     }
   }
-
-  const filteredDataByResistance = getPokemonByResistant(arrayOfSelectedPokemonType, allName);
-
   //alert(inputElements.length);
   //alert(arrayOfFilteredPokemonType.length);
   //busca los pokemones que cumplan con los tipos seleccionados (o filtrados) en los checkbox
   //Inicializamos la funcion que importamos, usando como param1 = arrayOfSelectedPokemonType y como param2 = allPokemon
   const filteredDataByResistance = getPokemonByResistant(arrayOfSelectedPokemonType, allName);
   //reutilizamos la funcion pokemonList ahora con el resultado de la funcion anterior
-
   pokemonList(filteredDataByResistance);
 
 });
+//se ubica donde queremos que este el boton
 divPokemonType.appendChild(resistantButton);
-
-
-/*-------------------------------------------boton porcentajes-------------- */
-const percentageButton = document.createElement("button");
-percentageButton.id = "boton-filtro";
-percentageButton.innerHTML = "Porcentaje";
-
-let myChart = null;
-
-percentageButton.addEventListener("click", function () {
-
-  const root = document.getElementById('root');
-  let checkedValue = null;
-  const inputElements = document.getElementsByName('pokemonType');
-  const arrayOfSelectedPokemonType = new Array();
-  root.innerHTML = '';
-  for (let i = 0; i < inputElements.length; ++i) {
-    if (inputElements[i].checked) {
-      checkedValue = inputElements[i].value;
-      arrayOfSelectedPokemonType.push(checkedValue);
-    }
-  }
-  const filteredDataByType = getPokemonByType(arrayOfSelectedPokemonType, allName);
-
-  const filteredUnique = getPokemonUniqueType(filteredDataByType);
-  const arrayOfCountersOfPokemon = [];
-  let counter = 0 ;
-  let sumOfCombinations = 0;
-  let flagCombinedType = true;
-
-  for (let i = 0; i < filteredUnique.length; ++i) {
-    counter = getPokemonByType(filteredUnique[i], filteredDataByType);
-    arrayOfCountersOfPokemon.push(counter.length);
-    if(filteredUnique[i].length < 2)
-    {
-      //console.log('Existe un filtro de un solo tipo de pokemon: '+filteredUnique[i]+' por lo tanto siempre se restara al contador maximo los repetidos combinados')
-      flagCombinedType = false;
-    }
-    
-  }
-
-  for (let i = 0; i < arrayOfCountersOfPokemon.length; ++i) {
-    if (arrayOfCountersOfPokemon[i] !== Math.max(...arrayOfCountersOfPokemon)) {
-      
-      if((filteredUnique[i].join().includes('ice') ||
-           filteredUnique[i].join().includes('steel') ||
-           filteredUnique[i].join().includes('flying')) & flagCombinedType)
-      {
-        //console.log('No se le restara nada a ningun elemento del arreglo de contadores de pokemon porque no existe un filtro de un solo tipo de pokemon, solo combinados');
-        sumOfCombinations = 0;
-        break;
-      }
-
-      sumOfCombinations = sumOfCombinations + arrayOfCountersOfPokemon[i];
-    }
-  }
-  //console.log(Math.max(...arrayOfCountersOfPokemon))
-  const index = arrayOfCountersOfPokemon.indexOf(Math.max(...arrayOfCountersOfPokemon));
-  arrayOfCountersOfPokemon[index] = arrayOfCountersOfPokemon[index] - sumOfCombinations; 
-  //console.log(filteredUnique);
-  //console.log(arrayOfCountersOfPokemon)
-
-  const sum = arrayOfCountersOfPokemon.reduce((a,b) => a + b);
-  //console.log(sum);
-  const percentages = arrayOfCountersOfPokemon.map(x => (x / sum) * 100);
-  console.log(percentages); 
-
 /*---------------------------------------------- Funcion scroll- flecha pokebola ------------------------------------------------------*/
 // Funcion Extra : boton para subir en pantalla
 const divScroll = document.createElement('div');
@@ -692,19 +484,68 @@ footerDiv2.appendChild(parrafo2);
 footer.appendChild(footerDiv2);
 
 
-
-
-
-
+/*------------------------------------------boton porcentajes---------------------------------------*/
+const percentageButton = document.createElement("button");
+percentageButton.id = "boton-porcentaje";
+percentageButton.innerHTML = "Porcentaje";
+let myChart = null;
+percentageButton.addEventListener("click", function () {
+  const root = document.getElementById('root');
+  let checkedValue = null;
+  const inputElements = document.getElementsByName('pokemonType');
+  const arrayOfSelectedPokemonType = new Array();
+  root.innerHTML = '';
+  for (let i = 0; i < inputElements.length; ++i) {
+    if (inputElements[i].checked) {
+      checkedValue = inputElements[i].value;
+      arrayOfSelectedPokemonType.push(checkedValue);
+    }
+  }
+  const filteredDataByType = getPokemonByType(arrayOfSelectedPokemonType, allName);
+  const filteredUnique = getPokemonUniqueType(filteredDataByType);
+  const arrayOfCountersOfPokemon = [];
+  let counter = 0 ;
+  let sumOfCombinations = 0;
+  let flagCombinedType = true;
+  for (let i = 0; i < filteredUnique.length; ++i) {
+    counter = getPokemonByType(filteredUnique[i], filteredDataByType);
+    arrayOfCountersOfPokemon.push(counter.length);
+    if(filteredUnique[i].length < 2)
+    {
+      //console.log('Existe un filtro de un solo tipo de pokemon: '+filteredUnique[i]+' por lo tanto siempre se restara al contador maximo los repetidos combinados')
+      flagCombinedType = false;
+    }
+  }
+  for (let i = 0; i < arrayOfCountersOfPokemon.length; ++i) {
+    if (arrayOfCountersOfPokemon[i] !== Math.max(...arrayOfCountersOfPokemon)) {
+      if((filteredUnique[i].join().includes('ice') ||
+           filteredUnique[i].join().includes('steel') ||
+           filteredUnique[i].join().includes('flying')) & flagCombinedType)
+      {
+        //console.log('No se le restara nada a ningun elemento del arreglo de contadores de pokemon porque no existe un filtro de un solo tipo de pokemon, solo combinados');
+        sumOfCombinations = 0;
+        break;
+      }
+      sumOfCombinations = sumOfCombinations + arrayOfCountersOfPokemon[i];
+    }
+  }
+  //console.log(Math.max(...arrayOfCountersOfPokemon))
+  const index = arrayOfCountersOfPokemon.indexOf(Math.max(...arrayOfCountersOfPokemon));
+  arrayOfCountersOfPokemon[index] = arrayOfCountersOfPokemon[index] - sumOfCombinations;
+  //console.log(filteredUnique);
+  //console.log(arrayOfCountersOfPokemon)
+  const sum = arrayOfCountersOfPokemon.reduce((a,b) => a + b);
+  //console.log(sum);
+  const percentages = arrayOfCountersOfPokemon.map(x => (x / sum) * 100);
+  console.log(percentages);
   const ctx = document.getElementById('myChart');
-  //root.appendChild(ctx);
-  
+  root.appendChild(ctx);
   if(myChart)
   {
     myChart.clear();
     myChart.destroy();
   }
-  const Chart = "";
+  //const Chart = "";
   myChart = new Chart(ctx, {
     type: 'pie',
     data: {
@@ -723,13 +564,6 @@ footer.appendChild(footerDiv2);
       }
     }
   });
-
-  
-
 });
 divPokemonType.appendChild(percentageButton);
-
-
-
-
 
