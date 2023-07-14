@@ -283,6 +283,7 @@
 }
 
 .modal__container{
+    overflow: scroll;
     background-size: cover;
     margin: auto;
     width: 400px;
