@@ -84,8 +84,9 @@ Test Filtro.
 #### Prototipo de alta fidelidad
 
 
-diseño visual. Nosotros te recomendamos [Figma](https://www.figma.com/)
+diseño visual. Nosotros te recomendamos [Figma](https://www.figma.com/file/KiObrzfSpUtbpfMWTSI56t/Pokemon-ALta?type=design&node-id=0-1&mode=design&t=48F7ZpayV3imgWYD-0)
 
+![Alt text](<src/img/Pokemon ALta.png>)
 #### Testeos de usabilidad
 * Preguntas que se realizaron a un grupo de usuarias para el Feedback de los prototipos.
 1. ¿Consideras que cumplimos con las necesidades del usuario? (En caso de no cumplir) 
@@ -100,17 +101,17 @@ diseño visual. Nosotros te recomendamos [Figma](https://www.figma.com/)
 * Para el Hacker edition utilizamos la data que se habia filtrado en los tipos de pokemon, para graficar los valos por tipo ya sean convinados o uno solo. 
 * La herramienta a utilizar fue la etiqueta canvas de HTML 5
 ```html
-                                          <canvas id="myChart"></canvas>
+   <canvas id="myChart"></canvas>
 ```
 
 * [Chart.js](https://www.chartjs.org/)
 * Grafica por tipo de pokemon, de acuerdo al porcentaje del total de los pokemones existentes.
 ```js
-          const arrayOfTypes = ["grass", "poison", 
-          "normal", "water", "electric", "
-          fighting", "fairy", "ice", "flying", 
-          "psychic", "fire", "steel", "bug", 
-          "rock", "dragon", "dark", "ground", "ghost"];
+   const arrayOfTypes = ["grass", "poison", 
+   "normal", "water", "electric",
+   "fighting", "fairy", "ice", "flying", 
+    "psychic", "fire", "steel", "bug", 
+    "rock", "dragon", "dark", "ground", "ghost"];
 ```
 
 ![Alt text](src/img/grafica.png)
@@ -121,12 +122,18 @@ Resultados de tipo de pokemon en la grafica constrida con la data filtrada.
 Utilizamos la data del pokemon.js
 
 ```js
-               import data from './data/pokemon/pokemon.js';
+    import data from './data/pokemon/pokemon.js';
 ```
 * La data se almaceno en una variable para ser reutilizado en los demas filtrados.
 ```js
-              const allName = data.pokemon; // data pokemon
+     const allName = data.pokemon; // data pokemon
 ```
+## Pruebas Unitarias -Test 
+* Al corregir la variable usada en el expected, salió el siguiente error (ver img), como la función getPokemonUnique ordena el contenido de los arreglos para homogeneizarlos en caso de que tengan los mismos tipos pero en diferente orden, la solución fue cambiar el orden de un arreglo en el argumento entregado al toEqual ['water', 'psychic'] a ['psychic', 'water']
+
+![Alt text](<src/img/error en el test modificado.PNG>)
+
+
 
 ## Checklist para solicitar PF
 
@@ -141,13 +148,13 @@ Utilizamos la data del pokemon.js
   `README.md`.
 * ![\[ \] ](src/img/check.png)Incluye _Diseño de la Interfaz de Usuario_ (prototipo de alta fidelidad)
   en `README.md`.
-* [ ] Incluye link a Figma Dinámico para el test de usabilidad en `README.md`.
-* [ ] Incluye el listado de problemas que detectaste a través de tests de
+* ![ \[ \] ](src/img/check.png) Incluye link a Figma Dinámico para el test de usabilidad en `README.md`.
+* ![ \[ \] ](src/img/check.png) Incluye el listado de problemas que detectaste a través de tests de
   usabilidad en el `README.md`.
 * ![\[ \]](src/img/check.png) UI: Muestra lista y/o tabla con datos y/o indicadores.
 * ![\[ \]](src/img/check.png) UI: Permite ordenar data por uno o más campos (asc y desc).
 * ![ \[ \] ](src/img/check.png)UI: Permite filtrar data en base a una condición.
-* [ ] UI: Es _responsive_.
+* ![ \[ \] ](src/img/check.png)UI: Es _responsive_.
 
 Recuerda que también debes hacer: llenado de sprint check out de cierre de proyecto, una autoevaluación de objetivos de aprendizaje y autoevaluación de life skills desde tu dashboard de estudiante. [Acá el link](https://coda.io/d/_deHfHkTC743/Como-lograras-aprender-DEV_sumg1#_lu6qL) del flujo para que puedas ver el proceso.
 
