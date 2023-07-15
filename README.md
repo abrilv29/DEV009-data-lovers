@@ -84,7 +84,7 @@ Test Filtro.
 #### Prototipo de alta fidelidad
 
 
-diseño visual. Nosotros te recomendamos [Figma](https://www.figma.com/file/KiObrzfSpUtbpfMWTSI56t/Pokemon-ALta?type=design&node-id=0-1&mode=design&t=48F7ZpayV3imgWYD-0)
+diseño visual. Nosotros te recomendamos [Figma](https://www.figma.com/file/KiObrzfSpUtbpfMWTSI56t/Pokemon-ALta?type=design&node-id=0-1&mode=design&t=vDvPrgIcFf8lVLln-0)
 
 ![Alt text](<src/img/Pokemon ALta.png>)
 #### Testeos de usabilidad
