@@ -1,6 +1,5 @@
-import { filterCards, filterOrder, getPokemonByType, getPokemonByWeaknesses, getPokemonByResistant } from '../src/data.js';
 
-
+import { filterCards, filterOrder, getPokemonByType, getPokemonByWeaknesses, getPokemonByResistant, getPokemonUniqueType } from '../src/data.js';
 
 const objPokemon = [{
   "num": "001",
@@ -101,6 +100,13 @@ describe('filterOrder ', () => {
     expect(orderData [1].name).toEqual('charmander');
     expect(orderData [2].name).toEqual('bulbasaur');
   });
+
+  it('deberia retorna el orden de data pokemon de acuerdo al num', () => {
+    const orderData  = filterOrder(objPokemon,"num");
+    expect(orderData [0].num).toEqual('001');
+    expect(orderData [1].num).toEqual('004');
+    expect(orderData [2].num).toEqual('007');
+  });
 });
 
 
@@ -119,4 +125,16 @@ describe('getPokemonByResistant', () => {
   it('deberia retornar los tipos de pokemon que son resistentes al tipo seleccionado en el checkbox', () => {
     expect(getPokemonByResistant("fire", objPokemon)[1].resistant).toEqual(["fire","grass", "ice", "bug", "steel"]);
   });
+});
+/*----------------------------------------------------Tests Filtros por tipo------------------------------------------------*/
+
+test('getPokemonUniqueType should return an array with unique types', () => {
+  const pokemonList = [
+    { name: 'blastoise', type: ['water'] },
+    { name: 'dewgong', type: ['ice', 'water'] },
+    { name: 'starmie', type: ['water', 'psychic'] },
+  ];
+  const expected = [['water'], ['ice', 'water'], [ 'psychic', 'water']];
+  const result = getPokemonUniqueType(pokemonList);
+  expect(result).toEqual(expected);
 });

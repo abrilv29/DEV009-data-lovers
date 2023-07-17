@@ -19,12 +19,12 @@ export const filterOrder = (arrayPokemon, orderSelect) => {
     break;
   default:
 
-
   }
-  // console.log(orderName);
+  //console.log(orderName);
   return orderName;
 
 };
+
 //Inicializamos la funcion con dos parametros: param1 = arrayOfSelectedPokemonType, y param2 = pokemonList
 export const getPokemonByType = (arrayOfSelectedPokemonType, pokemonList) => {
   let pokemonFilteredList = null;
@@ -52,14 +52,18 @@ export const getPokemonByType = (arrayOfSelectedPokemonType, pokemonList) => {
             });
 
 
+
           //console.log("el objeto consultado es: "+objetoConsultado);
+
           return objetoConsultado;
 
         });
 
+
     // Se reemplaza el arreglo pokemonList (arreglo actual, puede ser el original o uno ya filtrada, depende de la iteración del for) por el arreglo
     // pokemonFilteredList (un arreglo más pequeño al cual ya se le aplicó el filtro) y ahora es el arreglo actual, por lo tanto la siguiente iteración
     // del for iterará sobre un arreglo más pequeño
+
     pokemonList = pokemonFilteredList;
 
   }
@@ -106,7 +110,6 @@ export const getPokemonByWeaknesses = (arrayOfSelectedPokemonType, pokemonList) 
 };
 
 
-
 //combinaciones existentes en los 251 pokemones
 export const getPokemonUniqueType = (pokemonList) => {
   const arrayOfUniquePokemonType = [];
@@ -124,3 +127,9 @@ export const getPokemonUniqueType = (pokemonList) => {
   //console.log(arrayOfUniquePokemonType);
   return arrayOfUniquePokemonType
 };
+
+
+
+
+
+
