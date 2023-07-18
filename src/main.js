@@ -84,7 +84,7 @@ const showModal = (dataPoke) => {
 
   const sectionModal = document.createElement('div');
   sectionModal.classList.add('modal');
-  console.log("hola");
+  //console.log("hola");
   sectionModal.innerHTML = `
                   <img src="img/cancelar.png" class="modal__close">
                   <div class="modal__container ${dataPoke.type[0]}">
@@ -180,7 +180,7 @@ const showModal = (dataPoke) => {
   return sectionModal;
 };
 
-/* ------------------------------ ESTRUCTURA DEL SEARCH NAME  -------------------------------------- */
+/* -------------------------------------------- ESTRUCTURA DEL SEARCH NAME  -------------------------------------- */
 //Buscar los pokemones por nombre usando un input
 const contentSearch = document.createElement("div");
 contentSearch.classList.add("class", "content-search");
@@ -234,7 +234,7 @@ const mensajeError = () => {
 
 
 
-/* ------------------------------ ESTRUCTURA ORDENAR A-Z Y Z-A  -------------------------------------- */
+/* ------------------------------------------------ ESTRUCTURA ORDENAR A-Z Y Z-A  -------------------------------------- */
 
 const select = document.createElement("select");
 select.id = "pokemonSelect";
@@ -288,7 +288,7 @@ select.addEventListener('change', () => {
   }
 
 });
-/*-----------------ESTRUCTURA FILTRO POKEMON BY TYPE--------------------------*/
+/*-------------------------------------------------- ESTRUCTURA FILTRO POKEMON BY TYPE --------------------------------------------*/
 
 const arrayOfTypes = ["grass", "poison", "normal", "water", "electric", "fighting", "fairy", "ice", "flying", "psychic", "fire", "steel", "bug", "rock", "dragon", "dark", "ground", "ghost"];
 const divPokemonType = document.createElement("div");
@@ -451,7 +451,7 @@ divScroll.addEventListener('click', () => {
   });
 });
 
-/*---------------------------------------------- Diseño del footer ------------------------------------------------------*/
+/*-------------------------------------------------------- DISEÑO DEL FOOTER ----------------------------------------------------------*/
 const footer = document.createElement('footer');
 footer.classList.add('content-footer');
 bodyPage.appendChild(footer);
@@ -488,7 +488,7 @@ footerDiv2.appendChild(parrafo2);
 footer.appendChild(footerDiv2);
 
 
-/*------------------------------------------boton porcentajes---------------------------------------*/
+/*--------------------------------------------------- BOTON VALUE ADDED Y GRAFICA ----------------------------------------------------------*/
 const percentageButton = document.createElement("button");
 percentageButton.id = "boton-porcentaje";
 percentageButton.innerHTML = "Value added";
@@ -570,46 +570,47 @@ percentageButton.addEventListener("click", function () {
     type: 'pie',
     data: {
       labels: filteredUnique,
+
       datasets: [{
         label: '% per unique or combined type',
         data: percentages,
         backgroundColor: [
-          'rgba(87, 158, 221, 1)',//water
-          'rgba(99, 188, 93, 1)',//grass
-          'rgba(182, 103, 205, 1)',//poison
-          'rgba(241, 216, 90, 1)',//electric
-          'rgba(209, 68, 97, 1)',//fighting
-          'rgba(237, 147, 228, 1)',//fairy
-          'rgba(121, 208, 193, 1)',//ice
-          'rgba(162, 188, 234, 1)',//flying
-          'rgba(248, 134, 132, 1)',//psychic
-          'rgba(249, 165, 85, 1)',//fire
-          'rgba(89, 149, 162, 1)',//steel
-          'rgba(147, 187, 58, 1)',//bug
-          'rgba(201, 187, 141, 1)',//rock
-          'rgba(23, 108, 197, 1)',//dragon
-          'rgba(89, 87, 97, 1)',//dark
-          'rgba(216, 124, 82, 1)',//ground
-          'rgba(96, 111, 186,1)',//ghost
+          'rgba(87, 158, 221, 1)',
+          'rgba(99, 188, 93, 1)',
+          'rgba(182, 103, 205, 1)',
+          'rgba(241, 216, 90, 1)',
+          'rgba(209, 68, 97, 1)',
+          'rgba(237, 147, 228, 1)',
+          'rgba(121, 208, 193, 1)',
+          'rgba(162, 188, 234, 1)',
+          'rgba(248, 134, 132, 1)',
+          'rgba(249, 165, 85, 1)',
+          'rgba(89, 149, 162, 1)',
+          'rgba(147, 187, 58, 1)',
+          'rgba(201, 187, 141, 1)',
+          'rgba(23, 108, 197, 1)',
+          'rgba(89, 87, 97, 1)',
+          'rgba(216, 124, 82, 1)',
+          'rgba(96, 111, 186,1)',
         ],// Colores de relleno de las rebanadas
         borderColor: [
-          'rgba(87, 158, 221, 1)',//water
-          'rgba(99, 188, 93, 1)',//grass
-          'rgba(182, 103, 205, 1)',//poison
-          'rgba(241, 216, 90, 1)',//electric
-          'rgba(209, 68, 97, 1)',//fighting
-          'rgba(237, 147, 228, 1)',//fairy
-          'rgba(121, 208, 193, 1)',//ice
-          'rgba(162, 188, 234, 1)',//flying
-          'rgba(248, 134, 132, 1)',//psychic
-          'rgba(249, 165, 85, 1)',//fire
-          'rgba(89, 149, 162, 1)',//steel
-          'rgba(147, 187, 58, 1)',//bug
-          'rgba(201, 187, 141, 1)',//rock
-          'rgba(23, 108, 197, 1)',//dragon
-          'rgba(89, 87, 97, 1)',//dark
-          'rgba(216, 124, 82, 1)',//ground
-          'rgba(96, 111, 186,1)',//ghost
+          'rgba(87, 158, 221, 1)',
+          'rgba(99, 188, 93, 1)',
+          'rgba(182, 103, 205, 1)',
+          'rgba(241, 216, 90, 1)',
+          'rgba(209, 68, 97, 1)',
+          'rgba(237, 147, 228, 1)',
+          'rgba(121, 208, 193, 1)',
+          'rgba(162, 188, 234, 1)',
+          'rgba(248, 134, 132, 1)',
+          'rgba(249, 165, 85, 1)',
+          'rgba(89, 149, 162, 1)',
+          'rgba(147, 187, 58, 1)',
+          'rgba(201, 187, 141, 1)',
+          'rgba(23, 108, 197, 1)',
+          'rgba(89, 87, 97, 1)',
+          'rgba(216, 124, 82, 1)',
+          'rgba(96, 111, 186,1)',
         ],// Color del borde
         borderWidth: 1
       }]
