@@ -93,7 +93,7 @@ Acceso al prototipo de alta fidelidad en [Figma](https://www.figma.com/community
 
 ## Resultados
 
-![Alt text](src\img\test.jpg)
+![Alt text](src/img/test.jpg)
 
 ## Hacker edition
 * Para el Hacker edition reutilizamos el checkbox donde podemos filtrar la data por tipo de pokemon, y con ello sacamos un cálculo agregado que nos permitiera hacer una gráfica.
