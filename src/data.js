@@ -14,7 +14,6 @@ export const filterOrder = (arrayPokemon, orderSelect) => {
   case "Z-A":
     orderName = arrayPokemon.sort((a, b) => (a.name > b.name ? -1 : 1));
     break;
-
   case "num":
     orderName = arrayPokemon.sort((a, b) => a.num > b.num ? 1 : -1);
     break;
@@ -46,7 +45,6 @@ export const getPokemonByType = (arrayOfSelectedPokemonType, pokemonList) => {
               //evalua si el arrego de los tipos (item), contiene el elemento de la iteración arrayOfSelectedPokemonType[indexCondition]
               if (item.indexOf(arrayOfSelectedPokemonType[indexCondition]) >= 0) {
                 //console.log("El tipo de pokemon a filtrar en la iteración número: "+indexCondition+" es: "+arrayOfSelectedPokemonType[indexCondition]);
-
                 return true;
               }
 
@@ -118,6 +116,7 @@ export const getPokemonUniqueType = (pokemonList) => {
   const arrayOfFlagsPokemonType = [];
   for (let indexCondition = 0; indexCondition < pokemonList.length; indexCondition++) {
     //console.log(pokemonList[indexCondition].type);
+
 
     if (!arrayOfFlagsPokemonType.includes(pokemonList[indexCondition].type.sort().join())) {
       arrayOfFlagsPokemonType.push(pokemonList[indexCondition].type.sort().join())

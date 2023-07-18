@@ -84,7 +84,7 @@ const showModal = (dataPoke) => {
 
   const sectionModal = document.createElement('div');
   sectionModal.classList.add('modal');
-  console.log("hola");
+  //console.log("hola");
   sectionModal.innerHTML = `
                   <img src="img/cancelar.png" class="modal__close">
                   <div class="modal__container ${dataPoke.type[0]}">
@@ -180,7 +180,7 @@ const showModal = (dataPoke) => {
   return sectionModal;
 };
 
-/* ------------------------------ ESTRUCTURA DEL SEARCH NAME  -------------------------------------- */
+/* -------------------------------------------- ESTRUCTURA DEL SEARCH NAME  -------------------------------------- */
 //Buscar los pokemones por nombre usando un input
 const contentSearch = document.createElement("div");
 contentSearch.classList.add("class", "content-search");
@@ -192,7 +192,7 @@ inputSearch.classList.add("class", "content-input");
 const searchInput = document.createElement("input");
 searchInput.type = 'search';
 searchInput.id = "searchId";
-searchInput.placeholder = 'Ingresa el nombre del pokemon ...';
+searchInput.placeholder = 'Search Pokémon ...';
 const inputImg = document.createElement("div");
 inputImg.classList.add("class", "input-img");
 const imgball = document.createElement('img');
@@ -234,14 +234,14 @@ const mensajeError = () => {
 
 
 
-/* ------------------------------ ESTRUCTURA ORDENAR A-Z Y Z-A  -------------------------------------- */
+/* ------------------------------------------------ ESTRUCTURA ORDENAR A-Z Y Z-A  -------------------------------------- */
 
 const select = document.createElement("select");
 select.id = "pokemonSelect";
 
 const mensajeOrder = document.createElement("option");
 mensajeOrder.value = "";
-mensajeOrder.text = "order";
+mensajeOrder.text = "Sort by";
 select.add(mensajeOrder);
 
 const option1 = document.createElement("option");
@@ -288,7 +288,7 @@ select.addEventListener('change', () => {
   }
 
 });
-/*-----------------ESTRUCTURA FILTRO POKEMON BY TYPE--------------------------*/
+/*-------------------------------------------------- ESTRUCTURA FILTRO POKEMON BY TYPE --------------------------------------------*/
 
 const arrayOfTypes = ["grass", "poison", "normal", "water", "electric", "fighting", "fairy", "ice", "flying", "psychic", "fire", "steel", "bug", "rock", "dragon", "dark", "ground", "ghost"];
 const divPokemonType = document.createElement("div");
@@ -451,7 +451,7 @@ divScroll.addEventListener('click', () => {
   });
 });
 
-/*---------------------------------------------- Diseño del footer ------------------------------------------------------*/
+/*-------------------------------------------------------- DISEÑO DEL FOOTER ----------------------------------------------------------*/
 const footer = document.createElement('footer');
 footer.classList.add('content-footer');
 bodyPage.appendChild(footer);
@@ -460,8 +460,12 @@ const footerDiv1 = document.createElement('div');
 footerDiv1.classList.add('content-img');
 const imgFooter = document.createElement('img');
 imgFooter.classList.add("img-logo");
-imgFooter.src = 'img/pokemon.png';
+imgFooter.src = 'img/pokemongo.png';
 imgFooter.alt = 'logo pokemon go';
+const copyrightLogo = document.createElement('p');
+copyrightLogo.innerHTML = '© 2023 Pokémon. © 1995-2023 Nintendo/Creatures Inc./GAME FREAK inc.'
+copyrightLogo.style.fontSize = "10px";
+footerDiv1.appendChild(copyrightLogo);
 footerDiv1.appendChild(imgFooter);
 footer.appendChild(footerDiv1);
 
@@ -484,12 +488,15 @@ footerDiv2.appendChild(parrafo2);
 footer.appendChild(footerDiv2);
 
 
-/*------------------------------------------boton porcentajes---------------------------------------*/
+/*--------------------------------------------------- BOTON VALUE ADDED Y GRAFICA ----------------------------------------------------------*/
 const percentageButton = document.createElement("button");
 percentageButton.id = "boton-porcentaje";
-percentageButton.innerHTML = "Porcentaje";
+percentageButton.innerHTML = "Value added";
+
 let myChart = null;
+
 percentageButton.addEventListener("click", function () {
+
   const root = document.getElementById('root');
   let checkedValue = null;
   const inputElements = document.getElementsByName('pokemonType');
@@ -502,11 +509,13 @@ percentageButton.addEventListener("click", function () {
     }
   }
   const filteredDataByType = getPokemonByType(arrayOfSelectedPokemonType, allName);
+
   const filteredUnique = getPokemonUniqueType(filteredDataByType);
   const arrayOfCountersOfPokemon = [];
   let counter = 0 ;
   let sumOfCombinations = 0;
   let flagCombinedType = true;
+
   for (let i = 0; i < filteredUnique.length; ++i) {
     counter = getPokemonByType(filteredUnique[i], filteredDataByType);
     arrayOfCountersOfPokemon.push(counter.length);
@@ -515,9 +524,12 @@ percentageButton.addEventListener("click", function () {
       //console.log('Existe un filtro de un solo tipo de pokemon: '+filteredUnique[i]+' por lo tanto siempre se restara al contador maximo los repetidos combinados')
       flagCombinedType = false;
     }
+    
   }
+
   for (let i = 0; i < arrayOfCountersOfPokemon.length; ++i) {
     if (arrayOfCountersOfPokemon[i] !== Math.max(...arrayOfCountersOfPokemon)) {
+      
       if((filteredUnique[i].join().includes('ice') ||
            filteredUnique[i].join().includes('steel') ||
            filteredUnique[i].join().includes('flying')) & flagCombinedType)
@@ -526,33 +538,80 @@ percentageButton.addEventListener("click", function () {
         sumOfCombinations = 0;
         break;
       }
+
       sumOfCombinations = sumOfCombinations + arrayOfCountersOfPokemon[i];
     }
   }
   //console.log(Math.max(...arrayOfCountersOfPokemon))
   const index = arrayOfCountersOfPokemon.indexOf(Math.max(...arrayOfCountersOfPokemon));
-  arrayOfCountersOfPokemon[index] = arrayOfCountersOfPokemon[index] - sumOfCombinations;
+  arrayOfCountersOfPokemon[index] = arrayOfCountersOfPokemon[index] - sumOfCombinations; 
   //console.log(filteredUnique);
   //console.log(arrayOfCountersOfPokemon)
+
   const sum = arrayOfCountersOfPokemon.reduce((a,b) => a + b);
   //console.log(sum);
   const percentages = arrayOfCountersOfPokemon.map(x => (x / sum) * 100);
-  console.log(percentages);
+  //console.log(percentages); 
+
+
+
+
   const ctx = document.getElementById('myChart');
-  root.appendChild(ctx);
+  //root.appendChild(ctx);
+  
   if(myChart)
   {
     myChart.clear();
     myChart.destroy();
   }
-  const Chart = "";
+  //Comentar para correr la pagina, descomentar para correr tests
+  //const Chart = "";
   myChart = new Chart(ctx, {
     type: 'pie',
     data: {
       labels: filteredUnique,
+
       datasets: [{
-        label: '# of Votes',
-        data: arrayOfCountersOfPokemon,
+        label: '% per unique or combined type',
+        data: percentages,
+        backgroundColor: [
+          'rgba(87, 158, 221, 1)',
+          'rgba(99, 188, 93, 1)',
+          'rgba(182, 103, 205, 1)',
+          'rgba(241, 216, 90, 1)',
+          'rgba(209, 68, 97, 1)',
+          'rgba(237, 147, 228, 1)',
+          'rgba(121, 208, 193, 1)',
+          'rgba(162, 188, 234, 1)',
+          'rgba(248, 134, 132, 1)',
+          'rgba(249, 165, 85, 1)',
+          'rgba(89, 149, 162, 1)',
+          'rgba(147, 187, 58, 1)',
+          'rgba(201, 187, 141, 1)',
+          'rgba(23, 108, 197, 1)',
+          'rgba(89, 87, 97, 1)',
+          'rgba(216, 124, 82, 1)',
+          'rgba(96, 111, 186,1)',
+        ],// Colores de relleno de las rebanadas
+        borderColor: [
+          'rgba(87, 158, 221, 1)',
+          'rgba(99, 188, 93, 1)',
+          'rgba(182, 103, 205, 1)',
+          'rgba(241, 216, 90, 1)',
+          'rgba(209, 68, 97, 1)',
+          'rgba(237, 147, 228, 1)',
+          'rgba(121, 208, 193, 1)',
+          'rgba(162, 188, 234, 1)',
+          'rgba(248, 134, 132, 1)',
+          'rgba(249, 165, 85, 1)',
+          'rgba(89, 149, 162, 1)',
+          'rgba(147, 187, 58, 1)',
+          'rgba(201, 187, 141, 1)',
+          'rgba(23, 108, 197, 1)',
+          'rgba(89, 87, 97, 1)',
+          'rgba(216, 124, 82, 1)',
+          'rgba(96, 111, 186,1)',
+        ],// Color del borde
         borderWidth: 1
       }]
     },
@@ -564,6 +623,8 @@ percentageButton.addEventListener("click", function () {
       }
     }
   });
+
+  
+
 });
 divPokemonType.appendChild(percentageButton);
-

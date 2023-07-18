@@ -1,5 +1,5 @@
 
-import { filterCards, filterOrder, getPokemonByType, getPokemonByWeaknesses, getPokemonByResistant,getPokemonUniqueType } from '../src/data.js';
+import { filterCards, filterOrder, getPokemonByType, getPokemonByWeaknesses, getPokemonByResistant, getPokemonUniqueType } from '../src/data.js';
 
 const objPokemon = [{
   "num": "001",
@@ -76,7 +76,6 @@ const objPokemon = [{
 ];
 
 describe('filterCards', () => {
-
   it('deberia retorna la data del pokemon segun el input', () => {
     const result = filterCards(objPokemon,"bul");
     expect(result[0].name).toEqual("bulbasaur");
@@ -127,15 +126,14 @@ describe('getPokemonByResistant', () => {
     expect(getPokemonByResistant("fire", objPokemon)[1].resistant).toEqual(["fire","grass", "ice", "bug", "steel"]);
   });
 });
-/*----------------------------------------------------Tests Filtros por tipo------------------------------------------------*/
 
-test('getPokemonUniqueType should return an array with unique types', () => {
+test('getPokemonUniqueType deberia retornar un arreglo con las combinaciones unicas encontradas del tipo de pokemon seleccionado en el checkbox, descarta las repetidas', () => {
   const pokemonList = [
     { name: 'blastoise', type: ['water'] },
     { name: 'dewgong', type: ['ice', 'water'] },
     { name: 'starmie', type: ['water', 'psychic'] },
+    { name: 'poliwag', type: ['water'] },
+    { name: 'slowbro', type: ['psychic', 'water'] },
   ];
-  const expected = [['water'], ['ice', 'water'], [ 'psychic', 'water']];
-  const result = getPokemonUniqueType(pokemonList);
-  expect(result).toEqual(expected);
+  expect(getPokemonUniqueType(pokemonList)).toEqual([['water'], ['ice', 'water'], [ 'psychic', 'water']]);
 });
