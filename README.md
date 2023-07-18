@@ -130,7 +130,7 @@ Al desarrollar un test para la función de getPokemonUniqueType nos fueron salie
 
 La solución fue cambiar la variable usada en expected, por que por la estructura de esta, el test no estaba entrando correctamente y no estaba ordenando el arreglo.
 
-![Test corregido](src\img\testmodificado.PNG)
+![Test corregido](src/img/testmodificado.PNG)
 
 Al corregir la variable usada en el expected, salió el siguiente error (ver img), como la función getPokemonUnique ordena el contenido de los arreglos para homogeneizarlos en caso de que tengan los mismos tipos pero en diferente orden. La solución fue cambiar el orden de un arreglo en el argumento entregado al toEqual ['water', 'psychic'] a ['psychic', 'water']
 
