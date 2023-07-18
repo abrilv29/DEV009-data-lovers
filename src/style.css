@@ -7,6 +7,11 @@
     font-family: "Poppins", sans-serif;
 }
 
+body {
+    background-image: linear-gradient(rgba(238, 238, 238, 0.5), rgba(238, 238, 238, 0.5)), url(img/fondo.png);
+    background-size: contain;
+    
+}
 /* --------------------Paleta de colores------------------------*/
 :root {
     --color-root: rgba(218, 218, 223, 0.384);
@@ -24,7 +29,6 @@
     /*background-image: url(./img/Banner.png);*/
     width: 100%;
 }
-
 .content-header img {
     width: 100%;
     background-size: cover;
@@ -206,7 +210,8 @@
 /*-----------estilos footer----------*/
 .content-footer {
     width: 100%;
-    padding: 20px;
+    height: fit-content;
+    margin: 1px;
     background-color: #B1B1B1;
     display: flex;
     flex-direction:row;
@@ -226,7 +231,7 @@
     padding: 15px;
 }
 .content-text img{
-    width: 50px;
+    width: 25px;
 }
 /* ----------scroll flecha ---------*/
 .content-scroll{
@@ -494,6 +499,10 @@ li img[alt=' type pokemon'] {
     height: 20px;
     display: inline-block;
 }
+canvas {
+    
+    padding: 100px;
+}
 /* ----------responsive desing ---------*/
 @media screen and (min-width: 280px) and (max-width: 390px) {
     .modal__title {
@@ -504,8 +513,7 @@ li img[alt=' type pokemon'] {
     }
     .content-img img {
         width: 90px;
-        margin-top: 65px;
-        margin-left: -13px;
+        margin: 5px;
     }
     .num-pokemon {
         padding-left: 20px;
@@ -518,6 +526,12 @@ li img[alt=' type pokemon'] {
         width: 100%;
         flex-wrap: wrap;
         
+    }
+    canvas {
+        padding: 5px;
+    }
+    .show .btn-scroll {
+        width: 50px;
     }
 }
 
