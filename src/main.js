@@ -557,7 +557,7 @@ percentageButton.addEventListener("click", function () {
 
 
   const ctx = document.getElementById('myChart');
-  //root.appendChild(ctx);
+  root.appendChild(ctx);
   
   if(myChart)
   {
